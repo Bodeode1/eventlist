@@ -11,7 +11,7 @@ class Event(models.Model):
     tags = models.CharField(max_length=50, null=True)
     status = models.BooleanField(default=False)
     start_date = models.DateField()
-    end-date = models.DateField()
+    end_date = models.DateField()
     event_type = models.CharField(max_length=20)
     gate_fee = models.DecimalField(max_digits=10, decimal_places=2)
     max_attendees = models.PositiveIntegerField()
@@ -22,18 +22,28 @@ class Event(models.Model):
         return self.title
 
 
-class Ticket(models.Model):
-    title = models.CharField(max_length=50)
-    amount = models.DecimalField(default=0, max_digits=10)
-    initial_quantity = models.PositiveIntegerField()
-    quantity_available = models.PositiveIntegerField()
+# class Ticket(models.Model):
+#   title = models.CharField(max_length=50)
+#   amount = models.DecimalField(default=0, max_digits=10)
+#   initial_quantity = models.PositiveIntegerField()
+#   quantity_available = models.PositiveIntegerField()
+#    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+
+#   def __str__(self) -> str:
+#       return self.title
+
+
+class Attendee(models.Model):
+    email = models.CharField(max_length=100, db_index=True)
+    name = models.CharField(max_length=100)
+    ticket_quantity = models.PositiveIntegerField(default=1)
+    amount_paid = models.DecimalField(default=0, max_digits=10, decimal_places=2)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return self.title
+        return self.name
 
-
-class Attendee(models.Model)
+    
 
     
 
