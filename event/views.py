@@ -96,13 +96,40 @@ def show_dashboard(request):
     user_id = request.user.id
     user = User.objects.get(pk=user_id)
     total_events_created = Event.objects.filter(creator=user).count()
-    total_events_completed = Event.objects.filter(creator=user, status=True).count()
-    total_attendees_for_your_event = Attendee.objects.filter(event__creator=user).count()
+    total_events_completed = Event.objects.filter(
+        creator=user, status=True).count()
+    total_attendees_for_your_event = Attendee.objects.filter(
+        event__creator=user).count()
     print(total_attendees_for_your_event)
     context = {
-        'username': user.username,
+        'username' : user.username,
         "total_events_created" : total_events_created,
         "total_events_completed" : total_events_completed,
         "total_attendees" : total_attendees_for_your_event
     }
     return render(request, "events/dashboard.html", context)
+
+def handle_logout(request):
+    logout(request)
+    return redirect("events:events_login")
+
+# Displays the add event form
+@login_required
+def add_event_view(request):
+    user_id = request.user.id
+    user = User.objects.get(pk=user_id)
+    context = {
+        'username' : user.username,
+        'form' : EventForm(),
+    }
+    return render(request, "events/add-event.html", context)
+
+@login_required
+def handle_add_event(request):
+    try:
+        form = EventsForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            description = form.cleaned_data['description']
+            venue = form.cleaned_data['venue']
+            start_date = form.cleaned_data[]
