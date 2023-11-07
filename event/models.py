@@ -22,16 +22,6 @@ class Event(models.Model):
         return self.title
 
 
-# class Ticket(models.Model):
-#   title = models.CharField(max_length=50)
-#   amount = models.DecimalField(default=0, max_digits=10)
-#   initial_quantity = models.PositiveIntegerField()
-#   quantity_available = models.PositiveIntegerField()
-#    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-
-#   def __str__(self) -> str:
-#       return self.title
-
 
 class Attendee(models.Model):
     email = models.CharField(max_length=100, db_index=True)
