@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 
 
 class Event(models.Model):
-    title = models.CharField(max_length=100, null=False, blank=False, db_index=True)
+    title = models.CharField(max_length=100, null=False,
+                             blank=False, db_index=True)
     description = models.TextField()
     venue = models.CharField(max_length=100)
     tags = models.CharField(max_length=50, null=True)
@@ -22,22 +23,13 @@ class Event(models.Model):
         return self.title
 
 
-
 class Attendee(models.Model):
     email = models.CharField(max_length=100, db_index=True)
     name = models.CharField(max_length=100)
     ticket_quantity = models.PositiveIntegerField(default=1)
-    amount_paid = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+    amount_paid = models.DecimalField(
+        default=0, max_digits=10, decimal_places=2)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return self.name
-
-    
-
-    
-
-
-
-
-
