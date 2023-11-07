@@ -12,16 +12,18 @@ from .forms import EventForm
 # Import Models
 from .models import Event, Attendee
 
+
 def index_handler(request):
     query = request.GET.get('query', '')
     events = []
     if query:
-        events = Event.objects.filter(title__icontains=query) | Event.objects.filter(description__icontains=query)
+        events = Event.objects.filter(title__icontains=query) | Event.objects.filter(
+            description__icontains=query)
     else:
         events = Event.objects.order_by("title")[:2]
     context = {
-        "events" : events,
-        "user" : request.user
+        "events": events,
+        "user": request.user
     }
 
     return render(request, 'events/index.html', context)
@@ -45,18 +47,20 @@ def process_signup_form(request):
 
         query = Q(username=username) | Q(email=email)
         is_user = User.objects.filter(query)
-        if(is_user):
+        if (is_user):
             messages.success(request, "Error, the email you provided is taken")
             return redirect("events:events_signup")
         User.objects.create_user(
-            username = username,
+            username=username,
             email=email,
             password=password
         )
-        messages.success(request, "Your account was created successfully, return to the login")
+        messages.success(
+            request, "Your account was created successfully, return to the login")
         return redirect("events:events_login")
     except KeyError as error:
-        messages.success(request, "There was an error with your registration, fill the form again correctly")
+        messages.success(
+            request, "There was an error with your registration, fill the form again correctly")
         return redirect("events:events_signup")
 
 
@@ -73,10 +77,12 @@ def authenticate_user(request):
             login(request, user, backend=None)
             return redirect("events:user_dashboard")
         else:
-            messages.success(request, "Sorry the details you provided are not valid")
+            messages.success(
+                request, "Sorry the details you provided are not valid")
             return redirect("events:events_login")
     except KeyError as error:
-        messages.success(request, "Sorry, the details you provided are not valid")
+        messages.success(
+            request, "Sorry, the details you provided are not valid")
         return redirect("events:events_login")
 
 
@@ -89,17 +95,14 @@ def handle_logout(request):
 def show_dashboard(request):
     user_id = request.user.id
     user = User.objects.get(pk=user_id)
+    total_events_created = Event.objects.filter(creator=user).count()
+    total_events_completed = Event.objects.filter(creator=user, status=True).count()
+    total_attendees_for_your_event = Attendee.objects.filter(event__creator=user).count()
+    print(total_attendees_for_your_event)
     context = {
         'username': user.username,
-        'form': EventsForm()
+        "total_events_created" : total_events_created,
+        "total_events_completed" : total_events_completed,
+        "total_attendees" : total_attendees_for_your_event
     }
-        
-
-
-
-
-
-
-
-
-
+    return render(request, "events/dashboard.html", context)
