@@ -102,27 +102,31 @@ def show_dashboard(request):
         event__creator=user).count()
     print(total_attendees_for_your_event)
     context = {
-        'username' : user.username,
-        "total_events_created" : total_events_created,
-        "total_events_completed" : total_events_completed,
-        "total_attendees" : total_attendees_for_your_event
+        'username': user.username,
+        "total_events_created": total_events_created,
+        "total_events_completed": total_events_completed,
+        "total_attendees": total_attendees_for_your_event
     }
     return render(request, "events/dashboard.html", context)
+
 
 def handle_logout(request):
     logout(request)
     return redirect("events:events_login")
 
 # Displays the add event form
+
+
 @login_required
 def add_event_view(request):
     user_id = request.user.id
     user = User.objects.get(pk=user_id)
     context = {
-        'username' : user.username,
-        'form' : EventForm(),
+        'username': user.username,
+        'form': EventForm(),
     }
     return render(request, "events/add-event.html", context)
+
 
 @login_required
 def handle_add_event(request):
@@ -132,4 +136,20 @@ def handle_add_event(request):
             title = form.cleaned_data['title']
             description = form.cleaned_data['description']
             venue = form.cleaned_data['venue']
-            start_date = form.cleaned_data[]
+            start_date = form.cleaned_data['start_date']
+            end_date = form.cleaned_data['end_date']
+            max_attendees = form.cleaned_data["max_attendees"]
+            event_type = form.cleaned_data["event_type"]
+            user_id = request.user.id
+            user = User.objects.get(pk=user_id)
+
+            Event.objects.create(
+               title = title,
+               description = description,
+               venue = venue,     
+               start_date = start_date,
+               end_date = end_date,
+               max_attendees = max_attendees,
+               event_type = event_type,
+               creator = user
+            )
