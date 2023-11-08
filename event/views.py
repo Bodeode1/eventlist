@@ -144,12 +144,81 @@ def handle_add_event(request):
             user = User.objects.get(pk=user_id)
 
             Event.objects.create(
-               title = title,
-               description = description,
-               venue = venue,     
-               start_date = start_date,
-               end_date = end_date,
-               max_attendees = max_attendees,
-               event_type = event_type,
-               creator = user
+                title=title,
+                description=description,
+                venue=venue,
+                start_date=start_date,
+                end_date=end_date,
+                max_attendees=max_attendees,
+                event_type=event_type,
+                creator=user
             )
+
+            messages.success(request, 'Your event was created successfully')
+            return redirect("events:add_event_view")
+        else:
+            messages.success(
+                request, 'Fill the form correctly with right data')
+            return redirect("events:add_event_view")
+    except KeyError as error:
+        messages.success(request, "Fill the form correctly")
+        return redirect("events:add_event_view")
+
+
+@login_required
+def show_user_events(request):
+    user_id = request.user.id
+    user = User.objects.get(pk=user_id)
+
+    events = Event.objects.filter(creator=user).annotate(
+        attendee_count=Count('attendee'))
+
+    context = {
+        "events": events
+    }
+    return render(request, "events/event-list.html", context)
+
+
+#  View detail of a given event 
+@login_required
+def get_single_event(request, id):
+    try:
+        event = Event.objects.get(pk=id)
+        attendees_count = Attendee.objects.filter(event=event).count()
+        ticket_remaining = event.max_attendees - attendees_count
+        context = {
+            "event" : event,
+            "attendees_count" : attendees_count,
+            "ticket_remaining" : ticket_remaining
+        }
+        return render(request, "events/event-detail.html", context)
+    except Event.DoesNotExist:
+        raise Http404("You do not have an event with that id")
+
+# Delete an event by it's id
+@login_required
+def delete_single_event(request, id):
+    try:
+        user_id = request.user.id
+        user = User.objects.get(pk=user_id)
+        event = Event.objects.get(pk=id, creator=user)
+    except Event.DoesNotExist:
+        raise Http404("You do not have an event with that id")
+
+    Event.objects.filter(pk=id).delete()
+    return render(request, "events/event-delete-success.html")
+
+# Get Ticket for an event
+def purchase-event(request, id):
+    event =Event.objects.get(pk=id)
+    attendees_count = Attendee.objects.filter(event=event).count()
+    ticket_remaining = event.max_attendees - attendees_count
+
+    context = {
+        "event" : event,
+        "ticket_remaining" : ticket_remaining
+    }
+    return render(request, "events/event-purchase.html", context)
+
+
+
