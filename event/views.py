@@ -283,7 +283,7 @@ def edit_event(request, id):
         start_date = event.start_date.strftime('%Y-%m-%d')
         end_date = event.end_date.strftime('%Y-%m-%d')
         context = {
-            "event": event,
+            "event" : event,
             "start_date": start_date,
             "end_date": end_date
         }
@@ -294,3 +294,47 @@ def edit_event(request, id):
 
 
 @login_required
+def save_edit_event(request, id):
+    try:
+
+        user_id = request.user.id
+        user = User.objects.get(pk=user_id)
+        event = Event.objects.get(pk=id, creator=user)
+        context = {
+            "event" : event,
+            "start_date" : event.start_date.strftime('%Y-%m-%d')
+            "end_date" : event.end_date.strftime('%Y-%m-%d')
+        }
+        title = request.POST['title']
+        description = request.POST['description']
+        venue = request.POST['venue']
+        start_date = request.POST['start_date']
+        end_date = request.POST['end_date']
+        max_attendees = request.POST["max_attendees"]
+        status = request.POST['status']
+        user_id = request.user.id 
+        user = User.objects.get(pk=user_id)
+        print(start_date, end_date)
+        if start_date > end_date:
+            messages.success(request, "Event start date cannot be greater than end date")
+            return render(request, "events/edit-event.html", context)
+        event.title = title
+        event.venue = venue
+        event.description = description
+        event.start_date = start_date
+        event.end_date = end_date
+        event.max_attendees = max_attendees
+        event.status = status
+
+        event.save()
+
+        messages.success(request, "You have successfully updated your event")
+        return render(request, "events/edit-event.html", context)
+    except Event.DoesNotExist:
+        raise Http404("You do not have an event with that id")
+    except Exception as error:
+        print(error)
+        messages.success(request, "An error occured, try again")
+        return render(request, "events/edit-event.html", context)
+        
+
