@@ -241,23 +241,26 @@ def process_event_checkout(request, id):
         ticket_remaining = event.max_attendees - attendees_count
 
         if ticket_remaining == 0:
-            messages.success(request, "Sorry, there is no more ticket available for purchase")
+            messages.success(
+                request, "Sorry, there is no more ticket available for purchase")
             return render(request, "events/event-purchase.html", context)
         # checks if the intending attendee is the creator of the event
         if user and user.email == email:
-            messages.success(request, "You cannot register as an attendeefor an event you created")
+            messages.success(
+                request, "You cannot register as an attendeefor an event you created")
             return render(request, "events/event-purchase.html", context)
 
         # Checks if the user has registered for the event before
         is_attendee = Attendee.objects.get(email=email, event=event)
         if is_attendee:
-            messages.success(request, "You cannot register twice for a single event")
+            messages.success(
+                request, "You cannot register twice for a single event")
             return render(request, "events/event-purchase.html", context)
     except Attendee.DoesNotExist:
         Attendee.objects.create(
-            email = email,
-            name = name,
-            event = event
+            email=email,
+            name=name,
+            event=event
         )
         messages.success(request, "You successfully bought the ticket")
         return render(request, "events/event-purchase.html", context)
@@ -268,4 +271,26 @@ def process_event_checkout(request, id):
         return render(request, "events/event-purchase.html", context)
 
 
+@login_required
+def edit_event(request, id):
+    try:
 
+        user_id = request.user.id
+        user = User.objects.get(pk=user_id)
+        event = Event.objects.get(pk=id, creator=user)
+
+        # Format the date as a string in ISO format (YYYY-MM-DD)
+        start_date = event.start_date.strftime('%Y-%m-%d')
+        end_date = event.end_date.strftime('%Y-%m-%d')
+        context = {
+            "event": event,
+            "start_date": start_date,
+            "end_date": end_date
+        }
+        return render(request, "events/edit-event.html", context)
+
+    except Event.DoesNotExist:
+        raise Http404("You do not have an event with that id")
+
+
+@login_required
