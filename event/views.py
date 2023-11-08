@@ -283,7 +283,7 @@ def edit_event(request, id):
         start_date = event.start_date.strftime('%Y-%m-%d')
         end_date = event.end_date.strftime('%Y-%m-%d')
         context = {
-            "event" : event,
+            "event": event,
             "start_date": start_date,
             "end_date": end_date
         }
@@ -301,9 +301,9 @@ def save_edit_event(request, id):
         user = User.objects.get(pk=user_id)
         event = Event.objects.get(pk=id, creator=user)
         context = {
-            "event" : event,
-            "start_date" : event.start_date.strftime('%Y-%m-%d')
-            "end_date" : event.end_date.strftime('%Y-%m-%d')
+            "event": event,
+            "start_date": event.start_date.strftime('%Y-%m-%d')
+            "end_date": event.end_date.strftime('%Y-%m-%d')
         }
         title = request.POST['title']
         description = request.POST['description']
@@ -312,11 +312,12 @@ def save_edit_event(request, id):
         end_date = request.POST['end_date']
         max_attendees = request.POST["max_attendees"]
         status = request.POST['status']
-        user_id = request.user.id 
+        user_id = request.user.id
         user = User.objects.get(pk=user_id)
         print(start_date, end_date)
         if start_date > end_date:
-            messages.success(request, "Event start date cannot be greater than end date")
+            messages.success(
+                request, "Event start date cannot be greater than end date")
             return render(request, "events/edit-event.html", context)
         event.title = title
         event.venue = venue
@@ -336,5 +337,3 @@ def save_edit_event(request, id):
         print(error)
         messages.success(request, "An error occured, try again")
         return render(request, "events/edit-event.html", context)
-        
-
