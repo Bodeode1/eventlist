@@ -179,7 +179,7 @@ def show_user_events(request):
     return render(request, "events/event-list.html", context)
 
 
-#  View detail of a given event 
+#  View detail of a given event
 @login_required
 def get_single_event(request, id):
     try:
@@ -187,15 +187,17 @@ def get_single_event(request, id):
         attendees_count = Attendee.objects.filter(event=event).count()
         ticket_remaining = event.max_attendees - attendees_count
         context = {
-            "event" : event,
-            "attendees_count" : attendees_count,
-            "ticket_remaining" : ticket_remaining
+            "event": event,
+            "attendees_count": attendees_count,
+            "ticket_remaining": ticket_remaining
         }
         return render(request, "events/event-detail.html", context)
     except Event.DoesNotExist:
         raise Http404("You do not have an event with that id")
 
 # Delete an event by it's id
+
+
 @login_required
 def delete_single_event(request, id):
     try:
@@ -208,17 +210,62 @@ def delete_single_event(request, id):
     Event.objects.filter(pk=id).delete()
     return render(request, "events/event-delete-success.html")
 
-# Get Ticket for an event
+# Get ticket for an event
+
+
 def purchase-event(request, id):
-    event =Event.objects.get(pk=id)
+    event = Event.objects.get(pk=id)
     attendees_count = Attendee.objects.filter(event=event).count()
     ticket_remaining = event.max_attendees - attendees_count
 
     context = {
-        "event" : event,
-        "ticket_remaining" : ticket_remaining
+        "event": event,
+        "ticket_remaining": ticket_remaining
     }
     return render(request, "events/event-purchase.html", context)
+
+# Get ticket for an event
+
+
+def process_event_checkout(request, id):
+    try:
+        name = request.POST["name"]
+        email = request.POST["email"]
+        event = Event.objects.get(pk=id)
+        context = {
+            "event": event
+        }
+        user = User.objects.get(pk=event.creator.id)
+
+        attendees_count = Attendee.objects.filter(event=event).count()
+        ticket_remaining = event.max_attendees - attendees_count
+
+        if ticket_remaining == 0:
+            messages.success(request, "Sorry, there is no more ticket available for purchase")
+            return render(request, "events/event-purchase.html", context)
+        # checks if the intending attendee is the creator of the event
+        if user and user.email == email:
+            messages.success(request, "You cannot register as an attendeefor an event you created")
+            return render(request, "events/event-purchase.html", context)
+
+        # Checks if the user has registered for the event before
+        is_attendee = Attendee.objects.get(email=email, event=event)
+        if is_attendee:
+            messages.success(request, "You cannot register twice for a single event")
+            return render(request, "events/event-purchase.html", context)
+    except Attendee.DoesNotExist:
+        Attendee.objects.create(
+            email = email,
+            name = name,
+            event = event
+        )
+        messages.success(request, "You successfully bought the ticket")
+        return render(request, "events/event-purchase.html", context)
+    except Event.DoesNotExist:
+        raise Http404("You do not have an event with that id")
+    except KeyError as error:
+        messages.success(request, 'Fill the form correctly with right data')
+        return render(request, "events/event-purchase.html", context)
 
 
 
