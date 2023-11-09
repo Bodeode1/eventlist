@@ -30,8 +30,16 @@
                 {% if total_events_created > 0 %}
                     <a href="{% url 'events:user_events' %}" class="btn btn-add">View</a>
                 {% else %}
-                    <a href=""></a>
+                    <a href="{% url 'events:add_event_view' %}" class="btn btn-add">Add</a>
                 {% endif %}
+            </section>
+            <section class="dashboard-card">
+                <h3>Total Events Completed</h3>
+                <summary>{{ total_events_completed}}</summary>
+            </section>
+            <section class="dashboard-card">
+                <h3>All Attendees Count</h3>
+                <summary>{{ total_attendees }}</summary>
             </section>
         </section>
     </main>
