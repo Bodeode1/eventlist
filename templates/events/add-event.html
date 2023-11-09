@@ -1,10 +1,62 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <title>EventList : Dashboard</title>
+    <meta
+      name="description"
+      content="EventList is an event listing 
+and management application"
+    />
+    <meta
+      name="keyword"
+      content="events , event creation , event listing, event management"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
   </head>
-  <body></body>
+  <body class="bg-milk">
+    <header class="d-flex header-fmt pad-space">
+      <h1>
+        <a href="{% url 'events:user_dashboard' %}">EventList</a>
+      </h1>
+      <nav class="navigation">
+        <a href=""
+          >Hi, {{ username | slice:"10" }} {% if username|length > 10 %}...{%
+          endif %}</a
+        >
+        <a href="" class="btn btn-add">Add Event</a>
+        <a href="{% url 'events:events_logout' %}" class="btn btn-logout"
+          >Logout</a
+        >
+      </nav>
+    </header>
+    <main class="pad-space">
+      <section>
+        <form
+          class="event-form"
+          action="{% url 'events:process_event' %}"
+          method="post"
+        >
+          {% csrf_token %} {{ form.as_p }} {% if messages %}
+          <div class="modal">
+            <article class="modal-main">
+              {% for message in messages %}
+              <div>{{ message }}</div>
+              {% endfor %}
+            </article>
+            <div class="modal-closer">X</div>
+          </div>
+          {% endif %}
+          <input type="submit" class="input btn-submit" value="submit" />
+        </form>
+      </section>
+    </main>
+    <script src="{% static 'js/index.js' %}"></script>
+  </body>
 </html>
