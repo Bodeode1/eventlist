@@ -1,0 +1,77 @@
+{% load static %}
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Event Purchase</title>
+    <meta name="description" content="EventList is an event listing and management application">
+    <meta name="keyword" content="events , event creation , event listing, event management">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <header class="d-flex header-fmt pad-space">
+        <h1>
+            <a href="/">EventList</a>
+        </h1>
+        <nav class="navigation">
+            {% if user.is_authenticated %}
+                <a href="">Hi, Adeleke</a>
+                <a href="{% url 'events:add_event_view' %}" class="btn btn-add">Add Event</a>
+                <a href="{% url 'events:events_logout' %}" class="btn btn-logout">Logout</a>
+            {% else %}
+                <a href="#">About</a>
+                <a href="/signup" class="btn btn-home-signup">Sign Up</a>
+                <a href="/login" class="btn btn-logout">Login</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main class="pad-space">
+        <section class="event-content-section mb-2">
+            <div>
+                <header>
+                    {% if event.title %}
+                        <h1>{{ event.title }}</h1>
+                    {% else %}
+                        <h1>Missing Title</h1>
+                    {% endif %}
+                </header>
+                <address class="mb-1">Venue : {{ event.venue }}</address>
+                <p><strong>Ticket Remaining : {{ ticket_remaining }}</strong></p>
+                <div class="mb-2">
+                    <h3>Evebt Schedule</h3>
+                    <p>Start Date <date>2023-10-10</date></p>
+                    <p>End Date <date>2023-10-10</date></p>
+                </div>
+                <article class="mb-2">
+                    <h2 class="underline mb-2">Description</h2>
+                    <p class="event-description">{{ event.description }}</p>
+                </article>
+                <section>
+                    <h2>To get the ticket , fill the form below</h2>
+                    <form action="{% url 'events:checkout' event.id %}" method="post" style="width:50%">
+                        {% csrf_token %}
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" class="input">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="input">
+                        <input type="submit" class="btn btn-submit" value="Proceed">
+                    </form>
+                    {% if messages %}
+                    <div class="modal">
+                        <article class="modal-main">
+                            {% for message in messages %}
+                                <div> {{ message }}</div>
+                            {% endfor %}
+                        </article>
+                        <div class="modal-closer">X</div>
+                    </div>
+                    {% endif %}
+                </section>
+            </div>
+        </section>
+    </main>
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>
