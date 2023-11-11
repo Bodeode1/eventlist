@@ -1,0 +1,64 @@
+{% load static %}
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title> EventList : Home </title>
+    <meta name="description" content="EventList is an event listing and management application">
+    <meta name="keyword" content="events , event creation , event listing, event management">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body class="bg-milk">
+        <header class="d-flex header-fmt pad-space">
+            <h1>
+                <a href="/">EventList</a>
+            </h1>
+            <nav class="navigation">
+                {% if user.is_authenticated %}
+                    <a href="">Hi, Adeleke</a>
+                    <a href="{% url 'events:add_event_view' %}" class="btn btn-add">Add Event</a>
+                    <a href="{% url 'events:events_logout' %}" class="btn btn-logout">Logout</a>
+                {% else %}
+                <a href="#" >About</a>
+                <a href="/sign-up" class="btn btn-home-signup">Sign up</a>
+                <a href="/login" class="btn btn-logout">Login</a>
+                {% endif %}      
+            </nav>
+        </header>
+        <section class="pad-space mb-2" id="search-form">
+            <form action="{% url 'events:events_index' %}" class="flex-container search-parent mb-3" method="get">
+                <input type="search" placeholder="Which event are you looking for?" class="searcher" name="query">
+                <button type="submit" class="fa fa-search btn btn-logout" aria-hidden="true"></button>
+            </form>
+        </section>
+        <main class="pad-space">
+            <section id="created-events">
+                {% if events %}
+                <h2 class="mb-2">Available Events</h2>
+                <div class="grid-container three-column mb-5">
+                    {% for event in events%}
+                       <article>
+                            <div class="card-body">
+                                <h4 class="card-title"> {{ event.title}}</h4>
+                                <p class="mb-1"><strong>Happening on :</strong> {{ event.start_date}}</p>
+                                <p class="mb-1">{{ event.venue }}</p>
+                                <p class="mb-1">Tickets: {{ event.max_attendees }}</p>
+                            </div>
+                            <p class="card-action">
+                                <a href="{% url 'events:purchase_event' event.id %}">Buy Ticket</a>
+                            </p>
+                       </article>
+                    {% endfor %}
+                </div>
+                {% else %}
+                   <h2>No Event Available</h2>
+                {% endif %}
+            </section>
+        </main>
+        <footer class="fixed-to-bottom">
+            <p class="center-text">&copy; 2023 Designed and Developed by Olubode Odebiyi</p>
+        </footer>
+</body>
+</html>
