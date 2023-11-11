@@ -1,0 +1,46 @@
+{% load static %}
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title> EventList : Home </title>
+    <meta name="description" content="EventList is an event listing and management application">
+    <meta name="keyword" content="events , event creation , event listing, event management">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <main class="d-flex">
+        <section class="fr-md-6 main">
+            <form method="post" action="{% url 'events:process_login' %}" class="form">
+                {% csrf_token %}
+                <div class="center-text mb-2">
+                    <h2>EventList</h2>
+                    <p>Welcome back!</p>
+                    <p>Please login to your account</p>
+                </div>
+                <label for="username">Username</label>
+                <input class="input input-border-faint" type="text" name="username">
+                <label for="password">Password</label>
+                <input class="input input-border-faint" type="password" name="password">
+                <input type="submit" class="btn btn-submit" value="login">
+            </form>
+            {% if messages %}
+                <div class="modal">
+                    <article class="modal-main">
+                        {% for message in messages %}
+                            <div> {{ {{ message}}}}</div>
+                        {% endfor %}
+                    </article>
+                    <div class="modal-closer">X</div>
+                </div>
+            {% endif %}        
+        </section>
+        <aside class="from-sidebar fr-md-6">
+            <p>Discover events</p>
+        </aside>
+    </main>
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>
