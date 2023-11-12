@@ -1,0 +1,52 @@
+{% load static %}
+<!Doctype html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title> EventList : Signup  </title>
+    <meta name="description" content="EventList is an event listing and management application">
+    <meta name="keyword" content="events , event creation , event listing, event management">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <main class="d-flex">
+        <section class="fr-md-6 main">
+            <form method="post" action="{% url 'events:process_signup' %}" class="form">
+                {% csrf_token %} 
+                <div class="center-text mb-2">
+                    <h2>EventList</h2>
+                    <p>Join us</p>
+                    <p>Fill the form correctly</p>
+                </div>
+                <label for="usename">Username</label>
+                <input class="input input-border-faint" type="text" name="username">
+                <label for="email">Email</label> 
+                <input class="input input-border-faint" type="email" name="email">
+                <label for="password">Password</label>
+                <input class="input input-border-faint" type="password" name="password">
+                <label for="confirmpassword">Confirm Password</label> 
+                <input class="input input-border-faint" type="password" name="confirmpassword">
+                <input class="btn btn-submit" type="submit" value="Register">
+            </form>
+            {% if messages %}
+                <div class="modal">
+                    <article class="modal-main">
+                        {% for message in messages %} 
+                            <div> {{ message }}</div>
+                        {% endfor %}
+                    </article>
+                    <div class="modal-closer">X</div>
+                </div>
+           {% endif %}
+        </section>
+        <aside class="form-sidebar  fr-md-6">
+            <p>Discover events</p>
+        </aside>
+    </main>
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>
