@@ -1,0 +1,582 @@
+* , html ,  body::after , body::before {
+    padding : 0 ; 
+    margin : 0
+}
+
+html {
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+} 
+
+body {
+    font-size:16px ;
+    font-family : "Segoe UI" , Helvetica, sans-serif ; 
+    position: relative;
+}
+.pad-space {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+.bg-milk {
+    background : #efefef ; 
+}
+
+.header-fmt {
+    border : 2px solid #efefef;
+    padding : 1rem  1rem;
+    margin-bottom: 4rem;
+    background: #fff;
+}
+.app-logo a {
+    color : #000;
+    font-weight: 850;
+}
+.sign-up {
+    border : none ; 
+    border-radius: .25rem;
+    padding:.85rem;
+    background : #339 ; 
+    color : #fff
+}
+.flex-container {
+    display : flex ; 
+} 
+.space-btw {
+    justify-content: space-between;
+}
+a {
+    text-decoration: none; 
+    color : #000
+}
+
+.navigation a {
+    margin-left : 1rem
+}
+.flex-container{
+    display: flex;
+    justify-content: space-between;
+}
+.d-flex {
+    display : flex ; 
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.flex-75{
+    flex-basis: 0 0 75%;
+    width:75%;
+    max-width: 75%;
+}
+
+.flex-25{
+    flex-basis: 0 0 25%;
+    width:25%;
+    max-width: 25%;
+}
+
+.grid-container {
+    display : grid ; 
+    gap : 1rem
+} 
+
+.one-column {
+    grid-template-columns: 1fr;
+}
+
+
+img {
+    width: 100%;
+} 
+
+/* Utility Classes */ 
+.title {
+    font-size : 4rem;
+    font-weight: 800;
+}
+
+.mb-small {
+    margin-bottom : .55rem;
+}
+.mb-2 {
+    margin-bottom : 2rem
+} 
+
+.main-nav li {
+    display: inline; 
+    margin-left : 1rem
+}
+
+.grid-container {
+    display : grid ; 
+    grid-template-columns: repeat(4 , 1fr); 
+    grid-auto-rows: 1fr; 
+    gap : 1.5rem
+}
+
+.pad-top {
+    padding-top : 1.5rem
+} 
+.mb-3 {
+    margin-bottom: 3rem;
+}
+.mb-5 {
+    margin-bottom: 5rem;
+}
+
+.center-text {
+    text-align: center;
+}
+
+/* Styling Form */ 
+
+.flex-column {
+    display: flex; 
+    flex-direction: column; 
+}
+
+.form {
+    width: 80%;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+.input , .btn-submit  {
+    display: block;
+    padding : .8rem ; 
+    appearance : none ; 
+    outline : 0 ; 
+    border: 1px solid #ccc;
+    border-radius : 5px;
+    margin-bottom: 1rem; 
+} 
+
+.input:focus{
+    appearance : none ; 
+    outline : 0 ; 
+    border : 2px solid #000
+}
+
+.input-error {
+    color : hsl(4, 100%, 67%)
+}
+
+.btn-submit {
+    background : hsl(234, 29%, 20%) ; 
+    color :#fff;
+    width : 100%
+}
+
+.btn-submit:hover {
+    background :hsl(4, 100%, 67%)
+} 
+
+.main-elem {
+    background : #fff;
+    box-shadow: 1px 1px 1px #fff; 
+    border-radius: 10px;
+    display: flex; 
+    align-items: center; 
+    align-content: center;
+    justify-content: center;
+}
+
+
+
+/* Styling Tables */
+caption {
+    font-size: 1.5rem; 
+    font-weight: 650;
+    margin-bottom: 1.2rem;
+}
+table {
+    border-collapse : collapse;
+    width : 100%;
+    overflow: scroll;
+    font-size: .85rem;
+    background: #fff;
+}
+table,th,td {
+    border : 1px solid #fbfafa;
+    padding : 10px;
+}
+thead {
+    background : black ; 
+    color : #fff
+}
+
+/*Styling Buttons*/
+.btn {
+    border : none ; 
+    padding : 10px 20px ;
+    border-radius: 5px;
+}
+
+.btn-danger {
+    background: rgb(235, 15, 15); 
+    color : #fff;
+}
+
+.btn-edit {
+    background-color: rgb(6, 146, 137);
+    color : #fff
+}
+.btn-add {
+    background-color: rgb(0, 156, 97);
+    color : #fff
+}
+
+.btn-logout {
+    background: rgb(169, 169, 169);
+    
+}
+.main {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    align-content: flex-end;
+    justify-content: center;
+    height: 100vh;
+    min-height: 100vh;
+}
+.po {
+   
+    background: #fff;
+    border : 1px solid #ccc ;
+    padding : 1rem
+}
+
+figure {
+    height: 15rem;
+}
+
+figure img {
+    width: 100%;
+    max-width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    object-position: top;
+}
+
+.grid-container > article {
+    background: #efefef; 
+    border : 1px solid #000
+}
+
+.card-body {
+    padding : 1rem;
+    background: #fff;
+}
+
+.card-title , .event-date , .event-venue {
+    margin-bottom : 1rem
+}
+
+.card-action {
+    background : hsl(173, 88%, 22%) ; 
+    text-align: center; 
+    padding : 1.1rem
+}
+
+.card-action >  a {
+    color : #fff
+}
+
+.w-70 {
+    width: 70%;
+}
+.btn-view-all {
+    border: none;
+    border-radius: .25rem;
+    padding: 1.5rem;
+    background: #339;
+    color: #fff
+}
+
+/*Styling Web Forms */
+.event-form {
+    background : #fff;
+    margin: 0 auto;
+    width: 60%;
+    padding : 2rem;
+    border-radius: 10px;
+    box-sizing: 10px 12px 8px #000;
+}
+
+
+
+.input , .btn-submit  {
+    display: block;
+    padding : .4rem ; 
+    appearance : none ; 
+    outline : 0 ; 
+    border: 1px solid #ccc;
+    border-radius : 5px;
+    margin-bottom: 1rem; 
+    width : 100%;
+} 
+
+.input:focus{
+    appearance : none ; 
+    outline : 0 ; 
+    border : 2px solid #000
+}
+
+.input-error {
+    color : hsl(4, 100%, 67%)
+}
+
+.input-border-faint {
+    border: 0.85px solid #ccc;
+}
+.input-border-faint:focus {
+    outline: 0;
+    border: 0.1px solid #ccc;
+    box-shadow: 0 0 0 0.01rem #ccc;
+}
+
+input,
+textarea,
+button {
+    box-sizing: border-box;
+    width: 80%;
+    padding: .4rem;
+    font-size: 1.1rem;
+    outline: 0;
+    display: block;
+    margin-bottom: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+
+}
+
+
+label:not(.class-name) {
+    display: block;
+    margin-bottom: 1rem;
+    margin-right: 0;
+}
+.btn-submit {
+    background : hsl(173, 88%, 22%) ; 
+    color :#fff;
+    width : 100%
+}
+
+.btn-home-signup {
+    background : hsl(173, 88%, 22%) ; 
+    color : #fff
+}
+.btn-submit:hover {
+    background :hsl(0, 2%, 12%)
+} 
+
+/*Styles for Modal */
+.modal {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.67);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 35;
+}
+.modal-main {
+    background: #fff;
+    border-radius: 2px;
+    position: fixed;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    width: 50%;
+    padding : 2rem;
+    text-align: center;
+}
+.modal-closer {
+    position: absolute;
+    top: 40%;
+    right: 30%;
+    color: #f00;
+    border: none;
+    font-size: 2rem;
+    background: none;
+    cursor: pointer;
+    
+}
+.d-block {
+    display: block;
+}
+.d-none {
+    display: none;
+}
+
+
+.attendee-overview {
+    margin-bottom: 2rem;
+}
+.attendee-overview strong {
+    display : block ;
+    margin-bottom: .5rem;
+}
+/* header {
+    margin-bottom: 2rem;
+} */
+.underline {
+    text-decoration: underline;
+}
+
+.form-sidebar, .main {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    align-content: flex-end;
+    justify-content: center;
+    height: 100vh;
+    min-height: 100vh;
+}
+.form-sidebar {
+    background: #eee;
+}
+.form-sidebar > p {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.event-content-section {
+   
+    background: #fff;
+    border : 1px solid #ccc ;
+    padding : 1rem
+}
+
+.attendee-overview {
+    margin-bottom: 2rem;
+}
+.attendee-overview strong {
+    display : block ;
+    margin-bottom: .5rem;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.event-description {
+    letter-spacing: .2px;
+}
+
+
+.events-summary {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+.dashboard-card {
+    background: #fff;
+    padding  :1rem;
+    text-align: center;
+}
+
+.dashboard-card h3 , .dashboard-card summary {
+    margin-bottom: 1.5rem;
+}
+
+
+.grid-container > article {
+    background: #efefef; 
+    border : 1px solid #000
+}
+
+.card-body {
+    padding : 1rem
+}
+
+.card-title , .event-date , .event-venue {
+    margin-bottom : 1rem
+}
+
+
+.card-action >  a {
+    color : #fff
+}
+
+.btn-view-all {
+    border: none;
+    border-radius: .25rem;
+    padding: 1.5rem;
+    background: #339;
+    color: #fff
+}
+
+.fixed-to-bottom {
+    position : fixed;
+    z-index: 99;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    background: #4c3e3ee1; 
+    color:#fff;
+    width: 100%;
+    padding : 1.5rem;
+    box-shadow: 10px 12px 8px;
+}
+
+.search-parent {
+    border-radius: .25rem;
+}
+.searcher { 
+    flex-basis: 95%;
+    border:none; 
+    padding : .75rem
+} 
+.searcher:focus  ,.searcher:hover , .searcher:active {
+    border : none!important;
+}
+
+.fa-search {
+    flex-basis: 5%; 
+    display: block; 
+    text-align: center; 
+    color : rgba(255, 255, 255, 0.877)
+}
+
+@media (min-width:300px){
+    .d-hide-sm{
+        display: none;
+    } 
+    .make-first {
+        order : 2
+    }
+    .flex-100{
+        flex-basis: 0 0 100%;
+        width:100%;
+        max-width: 100%;
+    }
+}
+
+@media(min-width : 746px){ 
+    .pad-space {
+        padding-left : 15rem ; 
+        padding-right  :15rem ; 
+    }
+    .two-column {
+        grid-template-columns: 2fr 1fr
+    }
+    .three-column {
+        grid-template-columns: repeat(3 , 1fr)
+    }
+    .content {
+        padding : 2rem ; 
+    }
+
+    .fr-md-6 {
+        flex-basis: 0 0 50%;
+        width: 50%;
+        max-width: 50%;
+    }
+}
