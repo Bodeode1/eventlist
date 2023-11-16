@@ -14,7 +14,6 @@ from pathlib import Path
 
 import os
 import dj_database_url
-
 if os.path.isfile('env.py'):
     import env
 
@@ -30,7 +29,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
     'eventlist.herokuapp.com', '8001-bodeode1-eventlist-fsida87knw.us2.codeanyapp.com']
@@ -48,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'django_summernote',
-    'event',
+    'events.apps.EventsConfig',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

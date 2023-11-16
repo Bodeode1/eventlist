@@ -18,5 +18,5 @@ urlpatterns = [
     path("dashboard/create-event/<int:id>/", views.get_single_event, name="single_event"),
     path("dashboard/delete-event/<int:id>/", views.delete_single_event, name="delete_single_event"),
     path("dashboard/edit-event/<int:id>/", views.edit_event, name="edit_event_view"),
-    path("dashboard/save-edit-event/<int:id>/", views.save_edit_event, name="save_edit_event")
+    path("dashboard/save-edit-event/<int:id>/", views.save_edit_event, name="save_edit_event"),
 ]

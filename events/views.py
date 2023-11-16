@@ -12,15 +12,20 @@ from .forms import EventForm
 # Import Models
 from .models import Event, Attendee
 
-
+# Handler for the index page
 def index_handler(request):
+    # Get the query parameter from the request
     query = request.GET.get('query', '')
     events = []
+
+    # Filter events based on query or get first two events if no query provided
     if query:
         events = Event.objects.filter(title__icontains=query) | Event.objects.filter(
             description__icontains=query)
     else:
         events = Event.objects.order_by("title")[:2]
+
+    # Define context data with events and user information
     context = {
         "events": events,
         "user": request.user
@@ -28,33 +33,39 @@ def index_handler(request):
 
     return render(request, 'events/index.html', context)
 
-
+# Display signup form
 def display_signup_form(request):
     return render(request, 'events/signup.html')
 
-
+# Processes user signup form data
 def process_signup_form(request):
     try:
-
+        # Extract user details from the POST request
         username = request.POST["username"]
         email = request.POST["email"]
         password = request.POST["password"]
         confirm_password = request.POST["confirmpassword"]
 
+        # Validate password match
         if password != confirm_password:
             messages.success(request, "Password is not equal")
             return redirect("events:events_signup")
 
+        # Check if username or email already exists
         query = Q(username=username) | Q(email=email)
         is_user = User.objects.filter(query)
         if (is_user):
             messages.success(request, "Error, the email you provided is taken")
             return redirect("events:events_signup")
+
+        # Create a new user with provided details
         User.objects.create_user(
             username=username,
             email=email,
             password=password
         )
+
+        # Display success message and redirect to login page
         messages.success(
             request, "Your account was created successfully, return to the login")
         return redirect("events:events_login")
@@ -63,11 +74,11 @@ def process_signup_form(request):
             request, "There was an error with your registration, fill the form again correctly")
         return redirect("events:events_signup")
 
-
+# Display Login form
 def display_login_form(request):
     return render(request, 'events/login.html')
 
-
+# Authenticate user based on login credentials
 def authenticate_user(request):
     try:
         username = request.POST["username"]
@@ -85,12 +96,12 @@ def authenticate_user(request):
             request, "Sorry, the details you provided are not valid")
         return redirect("events:events_login")
 
-
+# Handle user logout
 def handle_logout(request):
     logout(request)
     return redirect("events:events_login")
 
-
+# Show user dashboard with event statistics
 @login_required
 def show_dashboard(request):
     user_id = request.user.id
@@ -127,10 +138,11 @@ def add_event_view(request):
     }
     return render(request, "events/add-event.html", context)
 
-
+# Handle adding an event from the form data
 @login_required
 def handle_add_event(request):
     try:
+        # Handles creation of event. 
         form = EventsForm(request.POST)
         if form.is_valid():
             title = form.cleaned_data['title']
@@ -164,7 +176,7 @@ def handle_add_event(request):
         messages.success(request, "Fill the form correctly")
         return redirect("events:add_event_view")
 
-
+# Shows events associated with the logged-in user. Then annotates each event with the count of attendees.
 @login_required
 def show_user_events(request):
     user_id = request.user.id
@@ -179,7 +191,7 @@ def show_user_events(request):
     return render(request, "events/event-list.html", context)
 
 
-#  View detail of a given event
+#  Retrieves details of a single event based on the provided event ID and calculates the number of attendees and remaining tickets.
 @login_required
 def get_single_event(request, id):
     try:
@@ -197,7 +209,7 @@ def get_single_event(request, id):
 
 # Delete an event by it's id
 
-
+# Handles the deletion of a single event. It verifies if the event exists and if the logged-in user is the creator of that event before deleting 
 @login_required
 def delete_single_event(request, id):
     try:
@@ -214,10 +226,16 @@ def delete_single_event(request, id):
 
 
 def purchase-event(request, id):
+    # Fetch the Event object based on the provided ID
     event = Event.objects.get(pk=id)
+
+    # Calculate the count of attendees for this event
     attendees_count = Attendee.objects.filter(event=event).count()
+
+    # Calculate the remaining tickets available for purchase
     ticket_remaining = event.max_attendees - attendees_count
 
+    # Create a context dictionary containing event details and ticket availability
     context = {
         "event": event,
         "ticket_remaining": ticket_remaining
@@ -292,7 +310,8 @@ def edit_event(request, id):
     except Event.DoesNotExist:
         raise Http404("You do not have an event with that id")
 
-
+# Hadnles the editing and saving of an event.
+# Retrieves event details, validate the date range, and update the event.
 @login_required
 def save_edit_event(request, id):
     try:
