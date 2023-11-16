@@ -34,7 +34,7 @@ DEBUG = False
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
-    'eventlist.herokuapp.com', 'localhost']
+    'eventlist.herokuapp.com', 'eventlist-337b7f080a77.herokuapp.com']
 
 
 # Application definition

@@ -1,39 +1,75 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# EventList
 
-Welcome,
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Table Of Contents
+1. [Introduction](#Introduction)
+    1. [Scenario](#Scenario)
+2. [UX](#UX)
+    1. [User Stories](#User-Stories)
+    2. [Design Thinking](#Design-Thinking)
+3. [Features](#Features)
+    1. [Design Features](#Design-Features)
+    2. [Existing Features](#Existing-Features)
+    3. [Future Adaptations](#Future-Adaptations)
+4. [Issues and Bugs](#Issues-and-Bugs)
+5. [Technologies Used](#Technologies-Used)
+    1. [Main Languages Used](#Main-Languages-Used)
+    2. [Frameworks, Libraries & Programs Used](#Frameworks,-Libraries-&-Programs-Used)
+6. [Testing](#Testing)
+    1. [Testing.md](TESTING.md)
+7. [Deployment](#Deployment)
+    1. [Deployment.md](DEPLOYMENT.md)
+8. [Credits](#Credits)
+    1. [Content](#Content)
+    2. [People](#People)
+9. [Acknowledgements](#Acknowledgements)
+***
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+## Introduction
+# EventList
 
-## Codeanywhere Reminders
+Welcome to EventList, your destination for event listings and management.
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+## UX Development Plane
+### User-Stories
 
-`python3 -m http.server`
+Site user needs can broadly be split 2 epics:
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+- authentication
+- events creation
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+AUTHENTICATION
+- **As a** Administrator, **I want** to be able create user accounts from the command line, **so that** I can efficiently manage user access to the system
+- **As a** website User, **I want** to be able create an account on the website by providing my username, email, password, and confirming the password **so that** I can access and use the platform
 
-`http_server`
+- **As a** website User , **I want** to receive a confirmation message after registering for an account **so that**  I can be assured that my account has been successfully created and I can start managing my events
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+- **As a** User, **I want** the ability to login in to the website using the provided login form  **so that** I can engage with the platform
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+EVENT CREATION
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+- **As an** unregistered user, **I can** provide details **so that** I can create a unique account
 
-To log into the Heroku toolbelt CLI:
+- **As a** registered user, **I can** provide details **so that** I can login to my account
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+- **As an** unregistered user, **I can** create a unique password **so that** I can protect my personal account
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+- *As a* logged in user, **I can** view a page **so that** I can see my personal account details by individual field 
 
----
+- *As a* logged in user, **I can** click a button **so that** I can change my personal account details by individual field 
 
-Happy coding!
+- *As a* logged in user, **I can** click a button **so that** I can delete my account
+
+- *As a* logged in user, **I can** request an email **so that** I can reset my account password if I have forgotten it
+
+BOOKINGS MANAGEMENT
+
+- *As a* logged in user, **I can** provide booking details **so that** I can set up appointment
+
+- *As a* logged in user, **I can** update details **so that** I can reschedule an appointment with the Mutts cuts
+
+- *As a* logged in user, **I can** cancel an appointment **so that** I can cancel an appointment with the Mutts cuts
+
+- *As a* logged in user, **I can** request an email **so that** be reminded of an appointment
+
+- *As an** employee, **I can** view a page **so that** I can see my daily bookings or the current day

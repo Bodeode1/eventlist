@@ -8,7 +8,7 @@ from django.db.models import Q, Count
 from django.utils import timezone
 
 # Woprking with forms.
-from .forms import EventForm
+from .forms import EventsForm
 # Import Models
 from .models import Event, Attendee
 
@@ -225,7 +225,7 @@ def delete_single_event(request, id):
 # Get ticket for an event
 
 
-def purchase-event(request, id):
+def purchase_event(request, id):
     # Fetch the Event object based on the provided ID
     event = Event.objects.get(pk=id)
 
@@ -321,7 +321,7 @@ def save_edit_event(request, id):
         event = Event.objects.get(pk=id, creator=user)
         context = {
             "event": event,
-            "start_date": event.start_date.strftime('%Y-%m-%d')
+            "start_date": event.start_date.strftime('%Y-%m-%d'),
             "end_date": event.end_date.strftime('%Y-%m-%d')
         }
         title = request.POST['title']

@@ -22,9 +22,9 @@ class EventsForm(forms.Form):
         label="Attendees Count",
         widget=forms.NumberInput(attrs={"class": "input"})
     )
-    event_type = forms.CharField(
+    event_type = forms.ChoiceField(
         choices=[('remote', 'remote'), ('offline', 'offline')],
-        label='Event Type',
+        label='Event Type' , 
         widget=forms.Select(attrs={'class': 'input'})
     )
     start_date = forms.DateField(
