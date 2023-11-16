@@ -34,7 +34,7 @@ DEBUG = False
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
-    'eventlist.herokuapp.com', '8001-bodeode1-eventlist-fsida87knw.us2.codeanyapp.com']
+    'eventlist.herokuapp.com', 'localhost']
 
 
 # Application definition
