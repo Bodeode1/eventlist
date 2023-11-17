@@ -2,10 +2,11 @@
 
 ## Table Of Contents
 1. [Introduction](#Introduction)
-    1. [Scenario](#Scenario)
+
 2. [UX](#UX)
     1. [User Stories](#User-Stories)
     2. [Design Thinking](#Design-Thinking)
+    3. [Scope Plane](#Scope-Plane)
 3. [Features](#Features)
     1. [Design Features](#Design-Features)
     2. [Existing Features](#Existing-Features)
@@ -81,5 +82,203 @@ Employing a Design Thinking methodology, the student developer opts to explore v
 | **Overall Score**                       |   **44**   | **42**      |
 
 ### **Color Schema**   
-The  color shema was selected from [Coolors](https://coolors.co), I add the colors from the hero image, darkened the green and orange as necessary to achieve a higher contrast with white text inside.   
-![The color scheme](static/images/color-pallete.png "The Color Schema")  
+The  color shema was selected from [Coolors](https://coolors.co). The idea was to have combinations of colors.   
+![The color scheme](static/images/readme/colorpallete.png) 
+
+### **Typography**  
+All of the fonts were sourced from [Google Fonts](https://fonts.google.com).   
+* Main fonts: Verdana sans-serif   
+  A sans-serif type of font was chosen to give a simple, clean, and modern look to the site. 
+
+## Database Design
+
+Database schema was designed using [dbdesigner](https://erd.dbdesigner.net/).   
+![Database structure](static/images/readme/database.png "Database structure")   
+
+## Scope Plane
+
+* **Functional Requirements**   
+    ### User Authentication:  
+    - The system shall allow an Administrator to create user accounts via the command line interface.
+    - Users shall be able to create accounts on the website by providing username, email, password, and confirming the password.
+    - Upon successful registration, users should receive a confirmation message to verify account creation.
+
+    ### Login Functionality:
+    - Users shall be able to log in to the website using the provided login form.
+    - An Administrator should access the administrative dashboard via a dedicated URL login for secure system management.
+
+    ### Event Management:
+    - Account Users shall have the capability to create events on the platform.
+    - Users must have visibility of a list of events they've created, enabling them to track and update event details
+    - Users should be able to delete events they've created, with restrictions to ensure only administrators can delete events created by others.
+    - Account Users should view and manage the attendee list for events they've created.
+    - Editing functionalities for event details should be available to Account Users.
+
+    ### Ticket Booking:
+    - Guest Users must be able to book tickets for specific events.
+
+* **Non-Functional Requirements**  
+   ### Security:
+   - User authentication and sensitive information transmission (e.g., passwords) should be encrypted and secure.
+   - Access control mechanisms should restrict unauthorized access to sensitive functionalities (e.g., event deletion).
+
+   ### Performance:
+   - The system should respond promptly to user actions, ensuring minimal latency during event creation, updates, and bookings.
+
+   ### User Experience (UX):
+   - The user interface should be intuitive, guiding users through registration, event creation, and management processes.
+
+   - Responsive design principles should be employed to ensure usability across various devices and screen sizes.
+
+   ### Compatibility:
+   - The web application should be compatible with major browsers (Chrome, Firefox, Safari, etc.) to ensure a seamless user experience.
+
+#### Skeleton
+Wireframes were made to showcase the appearance of the site pages while keeping a positive user experience in mind. The wireframes were created using a desktop version of [Balsamiq](https://balsamiq.com/).
+
+<details>
+<summary>Balsamiq Wireframes</summary>
+    
+![Site Wireframes](docs/readme/wireframes/00-index-page.png)
+
+![Site Wireframes](docs/readme/wireframes/01-our-services.png)
+
+![Site Wireframes](docs/readme/wireframes/02-join-us.png)
+
+![Site Wireframes](docs/readme/wireframes/03-my-account.png)
+
+![Site Wireframes](docs/readme/wireframes/04-book-now.png)
+
+![Site Wireframes](docs/readme/wireframes/05-my-appointments.png)
+
+![Site Wireframes](docs/readme/wireframes/06-daily-calender.png)
+
+</details>   
+
+[Back to top](#Mutts-Cuts)
+
+## Features
+
+**SCREENSHOOTS AND BRIEF SYNOPSIS OF MAIN SITE FEATURES TO GO HERE**
+**Useful Hint**
+In *DevTools*, in the Elements tab, right click on the target element and select `Capture node screenshot`.
+Useful for creating image files for readme.
+
+### Design Features
+
+### Existing Features
+
+## Home Page
+The home page immediately inform the users of the purpose of the webite. 
+
+![landing](docs/readme/features/00-features-landing.PNG "landing")
+
+## Minimised Navigation 
+
+The navigation bar featured all four pages which are all hypetext links to the logo (home page), Add Event page , login page sign-up page. 
+
+This section will allow users to navigate across all the pages of the website.
+![navigation bar](assets/images/navbar.png)
+
+## The About Page
+The About page informs the user of the company's mission and the technology it provides to deliver its mission. This section also provides the company's contact details and then introduces the users to the executive team.
+
+![Team](assets/images/ourteam.png)
+
+Fixed Footer
+
+Links are always available at the bottom of the page for all viewscreen sizes.
+
+It has been intentionally omitted from the landing page for styling purposes.
+
+To assist user, link elements change style when hovering.
+
+![fixed-footer](docs/readme/features/03-features-fixed-footer.PNG "fixed-footer")
+
+CTA Buttons on Landing Page
+
+If user is logged in, an additional `Book Now` button becomes available.  This is a short cut to the *view booking* template.
+
+To enhance user experience, buttons change style when hovering.
+
+![cta-not-logged-in](docs/readme/features/04-features-cta-not-logged-in.PNG "cta-not-logged-in")
+
+Additionally the registration and logon CTA buttons are hidden when a user is authenticated.  They aren't required in this context.
+
+To enhance user experience, buttons change style when hovering.
+
+![cta-logged-in](docs/readme/features/05-features-cta-logged-in.PNG "cta-logged-in")
+
+Services Page
+
+Contains a brief synopsis of the services offered, drawn from the backend Services table.
+
+A carousel element with 3 images has been included to make the site feel more dynamic.
+
+![services](docs/readme/features/06-features-services.PNG "services")
+
+Registration Page
+
+Standard allauth signup page adapted to the site's theme.
+
+![registration](docs/readme/features/07-features-registration.PNG "registration")
+
+Login Page
+
+Standard allauth signup page adapted to the site's theme.
+
+![login](docs/readme/features/08-features-login.PNG "login")
+
+View bookings page
+This shows the user all existing bookings.  It is intended that that they use this information to book an appointment that doesn't overlap with an existing one.
+
+All accounts can:
+- view a page personalised with their username
+- view bookings from the current date to one year in the future
+- filter the table using a jQuery support date picker. This has been setup to allow selections from current date to one year in the future.
+- `Show all` button removes filtering and restores table to default.
+- create a booking by selecting `Book Now`
+- the table itself utilizes a hover effect for a whole row to emphasis the record the user is actively viewing/selecting.
+
+![jquery-datepicker](docs/readme/features/09-features-jquery-datepicker.PNG "jquery-datepicker")
+
+![view-booking-table](docs/readme/features/10-features-view-booking-table.PNG "view-booking-table")
+
+Superuser and staff accounts have:
+- full CRUD access to all bookings made.
+- can view all booking information including user names
+
+![view-booking-full-crud-access](docs/readme/features/11-features-view-booking-full-crud-access.PNG "view-booking-full-crud-access")
+
+Standard user accounts have:
+- CRUD functionality limited to their own records. This is to counter malicious or accidental tampering with the database.
+- To protect identities of clients, a `*****` placeholder is used to anonymize the user field for records created by others.
+
+![view-booking-anonymize-other-users](docs/readme/features/12-features-view-booking-anonymize-other-users.PNG "view-booking-anonymize-other-users")
+
+Create booking page
+There is no need to ask the user for their name when they are signed into their account.
+To simplify data entry, the form contains an `html` date picker and dropdown menus whose options are based on the booking model.
+
+![create-booking](docs/readme/features/13-features-create-booking.PNG "create-booking")
+
+Edit booking page
+The edit booking follows the same conventions as the create booking page and is prepopulated with the record the user chose to edit.
+
+![edit-booking](docs/readme/features/14-features-edit-booking.PNG "edit-booking")
+
+Cancel booking modal
+This serves as a defensive programming feature for the user asking if they really wish to cancel their booking.
+
+The title and message body are personalised and the buttons have the same hover effects in keeping with the rest of the site.
+
+![cancel-booking-modal](docs/readme/features/15-features-cancel-booking-modal.PNG "cancel-booking-modal")
+
+#### Help using our site
+
+![help-modal](docs/readme/features/20-features-help-modal.PNG "help-modal")
+
+Customised alerts
+The Django framework has been used to apply messages throughout the site to give the user useful feedback.
+To do this a `messages.html` template was included in the base.html,
+`Alerts` can be seen at the top of the page for:
