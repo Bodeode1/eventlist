@@ -98,7 +98,7 @@ Database schema was designed using [dbdesigner](https://erd.dbdesigner.net/).
 ## Scope Plane
 
 * **Functional Requirements**   
-    ### User Authentication:  
+User Authentication:  
     - The system shall allow an Administrator to create user accounts via the command line interface.
     - Users shall be able to create accounts on the website by providing username, email, password, and confirming the password.
     - Upon successful registration, users should receive a confirmation message to verify account creation.
@@ -107,33 +107,33 @@ Database schema was designed using [dbdesigner](https://erd.dbdesigner.net/).
     - Users shall be able to log in to the website using the provided login form.
     - An Administrator should access the administrative dashboard via a dedicated URL login for secure system management.
 
-    ### Event Management:
+Event Management:
     - Account Users shall have the capability to create events on the platform.
     - Users must have visibility of a list of events they've created, enabling them to track and update event details
     - Users should be able to delete events they've created, with restrictions to ensure only administrators can delete events created by others.
     - Account Users should view and manage the attendee list for events they've created.
     - Editing functionalities for event details should be available to Account Users.
 
-    ### Ticket Booking:
+Ticket Booking:
     - Guest Users must be able to book tickets for specific events.
 
 * **Non-Functional Requirements**  
-   ### Security:
+Security:
    - User authentication and sensitive information transmission (e.g., passwords) should be encrypted and secure.
    - Access control mechanisms should restrict unauthorized access to sensitive functionalities (e.g., event deletion).
 
-   ### Performance:
+Performance:
    - The system should respond promptly to user actions, ensuring minimal latency during event creation, updates, and bookings.
 
-   ### User Experience (UX):
+User Experience (UX):
    - The user interface should be intuitive, guiding users through registration, event creation, and management processes.
 
    - Responsive design principles should be employed to ensure usability across various devices and screen sizes.
 
-   ### Compatibility:
+Compatibility:
    - The web application should be compatible with major browsers (Chrome, Firefox, Safari, etc.) to ensure a seamless user experience.
 
-#### Skeleton
+Skeleton
 Wireframes were made to showcase the appearance of the site pages while keeping a positive user experience in mind. The wireframes were created using a desktop version of [Balsamiq](https://balsamiq.com/).
 
 <details>
