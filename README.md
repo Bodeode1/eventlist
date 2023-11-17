@@ -1,6 +1,5 @@
 # EventList
 
-
 ## Table Of Contents
 1. [Introduction](#Introduction)
     1. [Scenario](#Scenario)
@@ -44,32 +43,43 @@ AUTHENTICATION
 
 - **As a** website User , **I want** to receive a confirmation message after registering for an account **so that**  I can be assured that my account has been successfully created and I can start managing my events
 
-- **As a** User, **I want** the ability to login in to the website using the provided login form  **so that** I can engage with the platform
+- **As a** Website User, **I want** the ability to login in to the website using the provided login form  **so that** I can engage with the platform
+
+- **As an** Adminiatrator, **I want** the ability to access the administrative dashboard through a dedicated URL login  **so that** it allows for a secure and convenient means of managing the system
 
 EVENT CREATION
 
-- **As an** unregistered user, **I can** provide details **so that** I can create a unique account
+- **As an** Account User , **I want** to create events on the platform **so that**  I can share the events information with others
 
-- **As a** registered user, **I can** provide details **so that** I can login to my account
+- **As an**  Account User, **I want**  I want to see a list of events I have created **so that** I can keep track of my events and make any necessary updates
 
-- **As an** unregistered user, **I can** create a unique password **so that** I can protect my personal account
+- **As an** Account User, **I want** the ability to delete events I have created **so that**  I can remove events that are no longer relevant
 
-- *As a* logged in user, **I can** view a page **so that** I can see my personal account details by individual field 
+- *As an* Account User, **I want** to ensure that only administrators can delete events that I have created **so that** unauthorized deletions are prevented
 
-- *As a* logged in user, **I can** click a button **so that** I can change my personal account details by individual field 
+- *As an* Account User, **I can** I want to see a list of attendees for events I have created **so that** I an see the guest list and make event preparations
 
-- *As a* logged in user, **I can** click a button **so that** I can delete my account
+- *As an* Accont User, **I want** to be able to edit details of events I have created **so that** I can make updates or corrections as needed
 
-- *As a* logged in user, **I can** request an email **so that** I can reset my account password if I have forgotten it
+- *As a* Guest User, **I want**  to be able to book tickets for a specific event **so that**  I can secure my spot and attend the event that I am interested in
 
-BOOKINGS MANAGEMENT
+### Design Thinking
 
-- *As a* logged in user, **I can** provide booking details **so that** I can set up appointment
+Employing a Design Thinking methodology, the student developer opts to explore various features perceived as most valuable by users on the finalized site. As specified in the assessment criteria, this project mandates the use of CRUD functionality, providing a fundamental structure for necessary functionalities. A preliminary evaluation has generated the following insights:
 
-- *As a* logged in user, **I can** update details **so that** I can reschedule an appointment with the Mutts cuts
+| Feature                                 | Importance | Feasibility |
+|:----------------------------------------|:----------:|:-----------:|
+| Creating an event                       |     5      |    5        |
+| Viewing events created                  |     5      |    4        |
+| Deleting events                         |     5      |    5        |
+| Viewing events attendee                 |     4      |    5        |
+| Editing events                          |     5      |    5        |
+| Searching for an Event                  |     5      |    4        |
+| Booking a Ticket to attend Event        |     5      |    4        |
+| Account User Registration               |     5      |    5        |
+| Admin login                             |     5      |    5        |
+| **Overall Score**                       |   **44**   | **42**      |
 
-- *As a* logged in user, **I can** cancel an appointment **so that** I can cancel an appointment with the Mutts cuts
-
-- *As a* logged in user, **I can** request an email **so that** be reminded of an appointment
-
-- *As an** employee, **I can** view a page **so that** I can see my daily bookings or the current day
+### **Color Schema**   
+The  color shema was selected from [Coolors](https://coolors.co), I add the colors from the hero image, darkened the green and orange as necessary to achieve a higher contrast with white text inside.   
+![The color scheme](static/images/color-pallete.png "The Color Schema")  

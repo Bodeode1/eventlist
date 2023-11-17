@@ -24,7 +24,7 @@ class Attendee(models.Model):
     email = models.CharField(max_length=100, db_index=True)
     name = models.CharField(max_length=100)
     amount_paid = models.DecimalField(
-        default=0, max_digits=10, decimal_places=2)
+    default=0, max_digits=10, decimal_places=2)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
