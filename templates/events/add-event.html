@@ -26,15 +26,10 @@ and management application"
         <a href="{% url 'events:user_dashboard' %}">EventList</a>
       </h1>
       <nav class="navigation">
-        <a href=""
-          >Hi, {{ username | slice:"10" }} {% if username|length > 10 %}...{%
-          endif %}</a
-        >
+        <a href="">Hi, {{ username | slice:"10" }}{% if username|length > 10 %}...{% endif %}</a>
         <a href="" class="btn btn-add">Add Event</a>
-        <a href="{% url 'events:events_logout' %}" class="btn btn-logout"
-          >Logout</a
-        >
-      </nav>
+        <a href="{% url 'events:events_logout' %}" class="btn btn-logout">Logout</a>
+    </nav>
     </header>
     <main class="pad-space">
       <section>

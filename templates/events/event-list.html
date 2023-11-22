@@ -43,7 +43,7 @@
                     {% for event in events %}
                         <tr>
                             <td>{{ forloop.counter }}</td>
-                            <td>{{event.title | slice:":15"}}{% if event.title | length > 15 %}...{% endif %}</td>
+                            <td> {{ event.title |slice:":15" }}{% if event.title|length > 15 %}...{% endif %} </td>
                             <td>{{ event.venue}}</td>
                             <td>
                                 {% if event.status %}
@@ -61,7 +61,7 @@
                     </tbody>
                     {% endfor %}
                 </table>
-            {% esle %}
+            {% else %}
                 <p>You currently have no events</p>
             {% endif%}
         </section>

@@ -134,7 +134,7 @@ def add_event_view(request):
     user = User.objects.get(pk=user_id)
     context = {
         'username': user.username,
-        'form': EventForm(),
+        'form': EventsForm(),
     }
     return render(request, "events/add-event.html", context)
 

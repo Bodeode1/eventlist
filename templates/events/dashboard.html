@@ -13,7 +13,7 @@
 <body class="bg-small">
     <header class="d-flex header-fmt pad-space">
         <h1>
-            <a href="{% url 'events:user_dashboard' %}">EventList/a>
+            <a href="{% url 'events:user_dashboard' %}">EventList </a>
         </h1>
         <nav class="navigation">
             <a href="">Hi, {{ username | slice:"10" }}{% if username|length > 10 %}...{% endif %}</a>

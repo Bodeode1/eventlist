@@ -16,11 +16,10 @@
             <a href="{% url 'events:user_dashboard' %}">EventList</a>
         </h1>
         <nav class="navigation">
-            <a href="">Hi, {{ username | slice:"10" }}{% if username|length > 10 %}...{%
-                endif %}</a>
-                <a href="{% url 'events:add_event_view' %}" class="btn btn-add">Add Event</a>
-                <a href="{% url 'events:events_logout' %}" class="btn btn-logout">Logout</a>
-          </nav>
+            <a href="">Hi, {{ username | slice:"10" }}{% if username|length > 10 %}...{% endif %}</a>
+            <a href="{% url 'events:add_event_view' %}" class="btn btn-add">Add Event</a>
+            <a href="{% url 'events:events_logout' %}" class="btn btn-logout">Logout</a>
+        </nav>
     </header>
     <main class="pad-space">
         <section class="event-content-section">
@@ -48,7 +47,7 @@
                 <article class="mb-2">
                     <h2 class="underline mb-2">description</h2>
                     <p class="event-description">
-                        {{ event-description }}
+                        {{ event.description }}
                     </p>
                 </article>
                 <div class="button-container">
