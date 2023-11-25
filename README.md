@@ -159,11 +159,7 @@ Wireframes were made to showcase the appearance of the site pages while keeping 
 
 ## Features
 
-**SCREENSHOOTS AND BRIEF SYNOPSIS OF MAIN SITE FEATURES TO GO HERE**
-**Useful Hint**
-In *DevTools*, in the Elements tab, right click on the target element and select `Capture node screenshot`.
-Useful for creating image files for readme.
-
+**MAIN SITE FEATURES**
 ### Design Features
 
 ### Existing Features
@@ -171,7 +167,7 @@ Useful for creating image files for readme.
 ## Home Page
 The home page immediately inform the users of the purpose of the webite. 
 
-![landing](docs/readme/features/00-features-landing.PNG "landing")
+![landing](docs/readme/features/homepage-feature.png)
 
 ## Minimised Navigation 
 
