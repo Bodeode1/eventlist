@@ -176,12 +176,11 @@ The navigation bar featured all four pages which are all hypetext links to the l
 This section will allow users to navigate across all the pages of the website.
 ![navigation bar](assets/images/navbar.png)
 
+## Add Event Page
+The "Add Event" page enables registered users to create an event for listing purposes.
+![Event Listing](docs/readme/features/add-event-feature.png)
+
 ## The About Page
-The About page informs the user of the company's mission and the technology it provides to deliver its mission. This section also provides the company's contact details and then introduces the users to the executive team.
-
-![Team](assets/images/ourteam.png)
-
-Fixed Footer
 
 Links are always available at the bottom of the page for all viewscreen sizes.
 
