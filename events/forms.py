@@ -29,8 +29,8 @@ class EventsForm(forms.Form):
     )
     start_date = forms.DateField(
         label="Start Date",
-        widget=forms.DateInput(attrs={"class": "input"}))
+        widget=forms.DateInput(attrs={"class": "input" , "placeholder" : "YYYY-MM-DD"}))
     end_date = forms.DateField(
-        label="End Date", widget=forms.DateInput(attrs={"class": "input"}))
+        label="End Date", widget=forms.DateInput(attrs={"class": "input" , "placeholder" : "YYYY-MM-DD"}))
     description = forms.CharField(
         widget=forms.Textarea(attrs={"class": "input"}))

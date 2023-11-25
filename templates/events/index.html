@@ -12,7 +12,7 @@
 </head>
 <body class="bg-milk">
     <header class="d-flex header-fmt pad-space">
-        <h1>
+        <h1 class="mb-1">
             <a href="/">EventList</a>
         </h1>
         <nav class="navigation">
@@ -21,9 +21,8 @@
                 <a href="{% url 'events:add_event_view' %}" class="btn btn-add">Add Event</a>
                 <a href="{% url 'events:events_logout' %}" class="btn btn-logout">Logout</a>
             {% else %}
-            <a href="#" >About</a>
             <a href="/sign-up" class="btn btn-home-signup">Sign up</a>
-            <a href="/login" class="btn btn-logout">Login</a>
+            <a href="/login" class="btn btn-nologout">Login</a>
             {% endif %}
            
         </nav>

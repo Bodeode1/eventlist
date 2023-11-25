@@ -93,7 +93,7 @@ All of the fonts were sourced from [Google Fonts](https://fonts.google.com).
 ## Database Design
 
 Database schema was designed using [dbdesigner](https://erd.dbdesigner.net/).   
-![Database structure](static/images/readme/database.png "Database structure")   
+![Event Lits ERD](docs/readme/agile/erd-mapping.png)  
 
 ## Scope Plane
 
