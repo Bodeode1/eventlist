@@ -1,71 +1,53 @@
-{% load static %}
-<!Doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width initial-scale=1.0">
-    <title>Event Detail</title>
-    <meta name="description" content="EventList is an event listing and management application">
-    <meta name="keyword" content="events , event creation , event listing, event management">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-</head>
+{% extends "events/base.html" %} 
+{% block title %} Dashboard: Event Detail {% endblock %} 
 <body class="milky-body">
-    <header class="d-flex header-fmt pad-space">
-        <h1>
-            <a href="{% url 'events:user_dashboard' %}">EventList</a>
-        </h1>
-        <nav class="navigation">
-            <a href="">Hi, {{ username | slice:"10" }}{% if username|length > 10 %}...{% endif %}</a>
-            <a href="{% url 'events:add_event_view' %}" class="btn btn-add">Add Event</a>
-            <a href="{% url 'events:events_logout' %}" class="btn btn-logout">Logout</a>
-        </nav>
-    </header>
-    <main class="pad-space">
-        <section class="event-content-section">
-            <div>
-                <header>
-                    {% if event.title %}
-                        <h1>{{ event.title}}</h1>
-                    {% else %}
-                        <h1>Missing Tile</h1>
-                    {% endif %}
-                </header>
-                <p>Event ID {{ event.id }}</p>
-                <address class="mb=1">Venue : {{ event.venue }}</address>
-                <div class="attendee-overview">
-                    <h3 class="mb-1">Attendees Summary</h3>
-                    <strong>Expected Attendees : {{ event.max_attendees }}</strong>
-                    <strong>Registered Attendees : {{ attendees_count }}</strong>
-                    <strong>Ticket Remaining : {{ ticket_remaining }}</strong>
-                </div>
-                <div class="mb-2">
-                    <h3>Event Schedule</h3>
-                    <p>Start Date <date>2023-10-10</date></p>
-                    <P>End Date <date>2023-10-10</date></P>
-                </div>
-                <article class="mb-2">
-                    <h2 class="underline mb-2">description</h2>
-                    <p class="event-description">
-                        {{ event.description }}
-                    </p>
-                </article>
-                <div class="button-container">
-                    <a href="{% url 'events:delete_single_event' event.id %}" class="btn btn-danger">Delete</a>
-                    <a href="{% url 'events:edit_event_view' event.id %}" class="btn btn-edit">Edit</a>
-                </div>
-                {% if messages %}
-                    <div class="modal">
-                        <article class="modal-main">
-                            {% for message in messages %}
-                                <div> {{ message}}</div>
-                            {% endfor %}
-                        </article>
-                        <div class="modal-closer">X</div>
+    {% block content %}
+        <main class="pad-space">
+            <section class="event-content-section">
+                <div>
+                    <header>
+                        {% if event.title %}
+                            <h1>{{ event.title}} </h1>
+                        {% else %}
+                            <h1>Missing Title</h1>
+                        {% endif %}
+                    </header>
+                    <p>Event ID {{ event.id}} </p>
+                    <address class="mb-1">Venue : {{ event.venue }} </address>
+                    <div class="attendee-overview">
+                        <h3 class="mb-1">Attendees Summary </h3>
+                        <strong>Expected Attendees : {{ event.max_attendees }} </strong>
+                        <strong>Registered Attendees : {{ attendees_count }}</strong>
+                        <strong>Ticket Remaining : {{ ticket_remaining }} </strong>
                     </div>
-                {% endif %}
-            </div>
-        </section>
-    </main>   
+                    <div class="mb-2">
+                        <h3>Event Schedule</h3>
+                        <p>Starts Date <date>2023-10-10</date> </p>
+                        <p> End Date <date>2023-10-10</date> </p>
+                    </div>
+                    <article class="mb-2">
+                        <h2 class="underline mb-2 ">Description</h2>
+                        <p class="event-description">
+                            {{ event.description }}
+                        </p>
+                    </article>
+                    <div class="button-container">
+                        <a href="{% url 'events:delete_single_event' event.id %}"  class="btn btn-danger">Delete</a>
+                        <a  href="{% url 'events:edit_event_view' event.id %}" class="btn btn-edit">Edit</a>
+                    </div>
+                    {% if messages %}
+                        <div class="modal">
+                            <article class="modal-main">
+                                {% for message in messages %} 
+                                    <div> {{ message }}</div>
+                                {% endfor %}
+                            </article>
+                            <div class="modal-closer">X</div>
+                        </div>
+                    {% endif %}
+                </div>
+            </section>
+        </main>
+    {% endblock %}
 </body>
 </html>

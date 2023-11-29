@@ -1,70 +1,56 @@
-{% load static %}
-<!Doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width initial-scale=1.0">
-    <title>Event Listing Page</title>
-    <meta name="description" content="EventList is an event listing and management application">
-    <meta name="keyword" content="events , event creation , event listing, event management">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-</head>
+{% extends "events/base.html" %} 
+{% block title %} Dashboard: Event List {% endblock %}
+
 <body class="bg-milk">
-    <header class="d-flex header-fmt pad-space">
-        <h1>
-            <a href="{% url 'events:user_dashboard' %}">EventList</a>
-        </h1>
-        <nav class="navigation">
-            <a href="">Hi, {{ username | slice:"10" }}{% if username|length > 10 %}...{% endif %}</a>
-            <a href="{% url 'events:add_event_view' %}" class="btn btn-add">Add Event</a>
-            <a href="{% url 'events:events_logout' %}" class="btn btn-logout">Logout</a>
-        </nav>
-    </header>
-    <main class="pad-space">
-        <section>
-            {% if events %}
-                <table>
-                    <caption>Event Listing</caption>
-                    <thead>
-                        <tr>
-                            <th>S/N</th>
-                            <th>Title</th>
-                            <th>Venue</th>
-                            <th>Status</th>
-                            <th>Attendees Limit</th>
-                            <th>Registered Attendees</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>View</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for event in events %}
-                        <tr>
-                            <td>{{ forloop.counter }}</td>
-                            <td> {{ event.title |slice:":15" }}{% if event.title|length > 15 %}...{% endif %} </td>
-                            <td>{{ event.venue}}</td>
-                            <td>
-                                {% if event.status %}
-                                    <span>Completed</span>
-                                {% else% }
-                                    <span>Pending</span>
-                                {% endif%}
-                            </td>
-                            <td>{{ event.max_attendees }}</td>
-                            <td>{{ event.attendee_count }}</td>
-                            <td>{{ event.start_date}}</td>
-                            <td>{{ event.end_date }}</td>
-                            <td><a href="{% url 'events:single_event' event.id %}" class="underline">View</a></td>
-                        </tr>
-                    </tbody>
-                    {% endfor %}
-                </table>
-            {% else %}
-                <p>You currently have no events</p>
-            {% endif%}
-        </section>
-    </main>
+    {% block content %}
+        <main class="pad-space">
+            <section style="width:100%;max-width: 100%;">
+                {% if events %} 
+                    <table class="table-responsive">
+                        <caption >Event Listing </caption> 
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Title</th>
+                                <th>Venue</th>
+                                <th>Status</th>
+                                <th>Attendees Limit</th>
+                                <th>Registered Attendees</th>
+                                <th>Start Date</th>
+                                <th>End Date</th> 
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for event in events %}
+                            <tr>
+                                <td> {{ forloop.counter }} </td>
+                                <td> {{ event.title |slice:":15" }}{% if event.title|length > 15 %}...{% endif %} </td>
+                                <td> {{ event.venue}} </td>
+                                <td>
+                                    {% if event.status %}
+                                        <span>Completed</span>
+                                    {% else %}
+                                        <span>Pending</span>
+                                    {% endif %}
+                                </td>
+                                <td> {{ event.max_attendees}} </td>
+                                <td> {{ event.attendee_count }} </td>
+                                <td> {{ event.start_date}} </td>
+                                <td> {{ event.end_date}} </td>
+                                <td> <a href="{% url 'events:single_event' event.id %}" class="underline">View</a></td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+
+                    </table>
+                    
+
+                {% else %} 
+                    <p>You currently have no events</p>
+                {% endif %}
+            </section>
+        </main>
+    {% endblock %}
 </body>
 </html>

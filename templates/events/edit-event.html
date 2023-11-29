@@ -1,106 +1,44 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width initial-scale=1.0" />
-    <title>Edit Event</title>
-    <meta
-      name="description"
-      content="EventList is an event listing and management application"
-    />
-    <meta
-      name="keyword"
-      content="events , event creation , event listing, event management"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
-  </head>
-  <body class="bg-milk">
-    <header class="d-flex header-fmt pad-space">
-      <h1>
-        <a href="{% url 'events:user_dashboard' %}">EventList</a>
-      </h1>
-      <nav class="navigation">
-        <a href="">Hi, {{ username | slice:"10" }}{% if username|length > 10 %}...{% endif %}</a>
-        <a href="{% url 'events:add_event_view' %}" class="btn btn-add">Add Event</a>
-        <a href="{% url 'events:events_logout' %}" class="btn btn-logout">Logout</a>
-    </nav>
-    </header>
-    <main class="pad-space">
-      <h2 class="center-text">Edit your event</h2>
-      <form
-        action="{% url 'events:save_edit_event' event.id %}"
-        method="post"
-        class="event-form w-70"
-      >
-        {% csrf_token %}
-        <label for="name">Title</label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          value="{{ event.title}}"
-          class="input"
-        />
-        <label for="description">Description</label>
-        <textarea name="description" id="description" class="input">
-            {{ event.description }}
-        </textarea>
-        <label for="venue">Venue</label>
-        <input
-          type="text"
-          name="venue"
-          id="venue"
-          value="{{ event.venue}}"
-          class="input"
-        />
-        <label for="venue">Status</label>
-        <select name="status" value="{{ event.status}}" class="input">
-          <option value="True">Completed</option>
-          <option value="False">Ongoing</option>
-        </select>
-        <label for="max_attendees">Attendees Count</label>
-        <input
-          type="number"
-          name="max_attendees"
-          value="{{ event.max_attendees}}"
-          class="input"
-        />
-        <label for="start date">Start Date</label>
-        <input
-          type="date"
-          name="start_date"
-          class="input"
-          value="{{ start_date }}"
-        />
-        <label for="end date">End Date</label>
-        <input
-          type="date"
-          name="end_date"
-          class="input"
-          value="{{ end_date }}"
-        />
-        <input
-          type="submit"
-          value="Save Changes"
-          class="input btn btn-submit"
-        />
-      </form>
-      {% if messages %}
-      <div class="modal">
-        <article class="modal-main">
-          {% for message in messages %}
-          <div>{{ message }}</div>
-          {% endfor %}
-        </article>
-        <div class="modal-closer">X</div>
-      </div>
-      {% endif %}
+{% extends "events/base.html" %} 
+{% block title %} Dashboard : Edit Event {% endblock %}
+
+<body class="bg-milk">
+    {% block content %}
+    <main class="pad-space"> 
+        <h2 class="center-text">Edit your event Event</h2>
+        <form action="{% url 'events:save_edit_event' event.id  %}" method="post"  class="event-form w-70">
+            {%csrf_token%}
+            <label for="name">Title</label>
+            <input type="text" name="title" id="title" value="{{ event.title }}" class="input">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" class="input">
+                {{ event.description }}
+            </textarea>
+            <label for="venue">Venue</label>
+            <input type="text" name="venue" id="venue" value="{{ event.venue}}" class="input">
+            <label for="venue">Status</label>
+            <select name="status" value="{{ event.status}}" class="input">
+                <option value="True">Completed</option>
+                <option value="False">Ongoing</option>
+            </select>
+            <label for="max_attendees">Attendees Count</label>
+            <input type="number" name="max_attendees"  value="{{ event.max_attendees}}" class="input">
+            <label for="start date">Start Date</label>
+            <input type="date" name="start_date" class="input" value="{{ start_date }}">
+            <label for="end date">End Date</label>
+            <input type="date" name="end_date" class="input" value="{{ end_date }}">
+            <input type="submit" value="Save Changes" class="input btn btn-submit">
+        </form>
+        {% if messages %}
+        <div class="modal">
+            <article class="modal-main">
+                {% for message in messages %} 
+                    <div> {{ message }}</div>
+                {% endfor %}
+            </article>
+            <div class="modal-closer">X</div>
+        </div>
+        {% endif %}
     </main>
-    <script src="{% static 'js/index.js' %}"></script>
-  </body>
+    {% endblock %}
+</body>
 </html>

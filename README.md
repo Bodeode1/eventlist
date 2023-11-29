@@ -164,32 +164,23 @@ Wireframes were made to showcase the appearance of the site pages while keeping 
 
 ### Existing Features
 
-## Home Page
+Home Page
 The home page immediately inform the users of the purpose of the webite. 
 ![landing](docs/readme/features/homepage-feature.png)
 
-## Navigation 
-
+Navigation 
 The navigation bar included hypertext links to four pages: the home page (represented by the logo), the Add Event page, the login page, and the sign-up page."
 ![landing](docs/readme/features/navigation-bar.png)
 
-## Add Event Page
+Add Event Page
 The "Add Event" page enables registered users to create an event for listing purposes.
 ![Event Listing](docs/readme/features/add-event-feature.png)
 
-## The Logout Page
+The Logout Page
 The logout page redirects users back to the home page.
 ![landing](docs/readme/features/login-feature.png)
 
-Links are always available at the bottom of the page for all viewscreen sizes.
-
-It has been intentionally omitted from the landing page for styling purposes.
-
-To assist user, link elements change style when hovering.
-
-![fixed-footer](docs/readme/features/03-features-fixed-footer.PNG "fixed-footer")
-
-CTA Buttons on Landing Page
+View Event Button on Home Page
 
 If user is logged in, an additional `Book Now` button becomes available.  This is a short cut to the *view booking* template.
 
