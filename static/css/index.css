@@ -631,7 +631,7 @@ label:not(.class-name) {
         justify-content: center;
         height: 100vh;
         min-height: 100vh;
-        background-image: url("../images/discover-image.jpg");
+        background-image: url("https://res.cloudinary.com/dchejfx36/image/upload/f_auto,q_auto/v1/static/images/discover-image.80715e67cbec");
         background-size: cover;
     }
 }
