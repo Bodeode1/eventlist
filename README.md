@@ -170,21 +170,28 @@ The home page immediately inform the users of the purpose of the webite.
 
 Navigation 
 The navigation bar included hypertext links to four pages: the home page (represented by the logo), the Add Event page, the login page, and the sign-up page."
+
 ![landing](docs/readme/features/navigation-bar.png)
 
 Add Event Page
 The "Add Event" page enables registered users to create an event for listing purposes.
+
 ![Event Listing](docs/readme/features/add-event-feature.png)
 
 The Logout Page
 The logout page redirects users back to the home page.
+
 ![landing](docs/readme/features/login-feature.png)
 
 View Event Button on Home Page
 Once users have added events, they can access the event list by clicking a button on the home page.
+
 ![landing](docs/readme/features/viewevent-button.png)
 
-View Tab on 
+View Tab on Event List Table
+The 'View' tab within the Event List table enables users to access comprehensive details of the entire event list.
+
+![landing](docs/readme/features/viewevent-fullpage.png)
 
 If user is logged in, an additional `Book Now` button becomes available.  This is a short cut to the *view booking* template.
 

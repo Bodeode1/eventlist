@@ -23,7 +23,7 @@ def index_handler(request):
         events = Event.objects.filter(title__icontains=query) | Event.objects.filter(
             description__icontains=query)
     else:
-        events = Event.objects.order_by("title")[:2]
+        events = Event.objects.order_by("start_date")[:12]
 
     # Define context data with events and user information
     context = {
