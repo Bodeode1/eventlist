@@ -209,8 +209,8 @@ thead {
 /*Styling Buttons*/
 .btn {
     border : none ; 
-    padding : 10px 20px ;
-    border-radius: 5px;
+    padding : 0.14rem 1.2rem ;
+    border-radius: .25rem;
 }
 
 .btn-danger {
