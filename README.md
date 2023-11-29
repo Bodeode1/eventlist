@@ -166,21 +166,20 @@ Wireframes were made to showcase the appearance of the site pages while keeping 
 
 ## Home Page
 The home page immediately inform the users of the purpose of the webite. 
-
 ![landing](docs/readme/features/homepage-feature.png)
 
-## Minimised Navigation 
+## Navigation 
 
-The navigation bar featured all four pages which are all hypetext links to the logo (home page), Add Event page , login page sign-up page. 
-
-This section will allow users to navigate across all the pages of the website.
-![navigation bar](assets/images/navbar.png)
+The navigation bar included hypertext links to four pages: the home page (represented by the logo), the Add Event page, the login page, and the sign-up page."
+![landing](docs/readme/features/navigation-bar.png)
 
 ## Add Event Page
 The "Add Event" page enables registered users to create an event for listing purposes.
 ![Event Listing](docs/readme/features/add-event-feature.png)
 
-## The About Page
+## The Logout Page
+The logout page redirects users back to the home page.
+![landing](docs/readme/features/login-feature.png)
 
 Links are always available at the bottom of the page for all viewscreen sizes.
 
