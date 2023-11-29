@@ -83,7 +83,8 @@ Employing a Design Thinking methodology, the student developer opts to explore v
 
 ### **Color Schema**   
 The  color shema was selected from [Coolors](https://coolors.co). The idea was to have combinations of colors.   
-![The color scheme](static/images/readme/colorpallete.png) 
+
+![Color Schema](docs/readme/media/colorpallete.png)  
 
 ### **Typography**  
 All of the fonts were sourced from [Google Fonts](https://fonts.google.com).   
@@ -193,88 +194,18 @@ The 'View' tab within the Event List table enables users to access comprehensive
 
 ![landing](docs/readme/features/viewevent-fullpage.png)
 
-If user is logged in, an additional `Book Now` button becomes available.  This is a short cut to the *view booking* template.
+Edit Event Page
+The 'Edit Event' button on the event editing page enables users to modify and save changes made to the listed event
 
-To enhance user experience, buttons change style when hovering.
+![landing](docs/readme/features/edit-yourevent-feature.png)
 
-![cta-not-logged-in](docs/readme/features/04-features-cta-not-logged-in.PNG "cta-not-logged-in")
+## **Features to be implemented in the future** 
+Due to time constraints on the current work project, certain features I intended to include could not be incorporated. Nevertheless, in future development phases, the following features could be considered for addition:
 
-Additionally the registration and logon CTA buttons are hidden when a user is authenticated.  They aren't required in this context.
+1. Search and Filtering Options: Enhance the search functionality by allowing users to filter events based on categories, dates, locations, or event types.
 
-To enhance user experience, buttons change style when hovering.
+2. Interactive Event Maps: Implement interactive maps to display event locations and provide directions or additional information.
 
-![cta-logged-in](docs/readme/features/05-features-cta-logged-in.PNG "cta-logged-in")
+3. Social Media Integration: Enable users to share events on social media platforms and promote events through social media integration.
 
-Services Page
-
-Contains a brief synopsis of the services offered, drawn from the backend Services table.
-
-A carousel element with 3 images has been included to make the site feel more dynamic.
-
-![services](docs/readme/features/06-features-services.PNG "services")
-
-Registration Page
-
-Standard allauth signup page adapted to the site's theme.
-
-![registration](docs/readme/features/07-features-registration.PNG "registration")
-
-Login Page
-
-Standard allauth signup page adapted to the site's theme.
-
-![login](docs/readme/features/08-features-login.PNG "login")
-
-View bookings page
-This shows the user all existing bookings.  It is intended that that they use this information to book an appointment that doesn't overlap with an existing one.
-
-All accounts can:
-- view a page personalised with their username
-- view bookings from the current date to one year in the future
-- filter the table using a jQuery support date picker. This has been setup to allow selections from current date to one year in the future.
-- `Show all` button removes filtering and restores table to default.
-- create a booking by selecting `Book Now`
-- the table itself utilizes a hover effect for a whole row to emphasis the record the user is actively viewing/selecting.
-
-![jquery-datepicker](docs/readme/features/09-features-jquery-datepicker.PNG "jquery-datepicker")
-
-![view-booking-table](docs/readme/features/10-features-view-booking-table.PNG "view-booking-table")
-
-Superuser and staff accounts have:
-- full CRUD access to all bookings made.
-- can view all booking information including user names
-
-![view-booking-full-crud-access](docs/readme/features/11-features-view-booking-full-crud-access.PNG "view-booking-full-crud-access")
-
-Standard user accounts have:
-- CRUD functionality limited to their own records. This is to counter malicious or accidental tampering with the database.
-- To protect identities of clients, a `*****` placeholder is used to anonymize the user field for records created by others.
-
-![view-booking-anonymize-other-users](docs/readme/features/12-features-view-booking-anonymize-other-users.PNG "view-booking-anonymize-other-users")
-
-Create booking page
-There is no need to ask the user for their name when they are signed into their account.
-To simplify data entry, the form contains an `html` date picker and dropdown menus whose options are based on the booking model.
-
-![create-booking](docs/readme/features/13-features-create-booking.PNG "create-booking")
-
-Edit booking page
-The edit booking follows the same conventions as the create booking page and is prepopulated with the record the user chose to edit.
-
-![edit-booking](docs/readme/features/14-features-edit-booking.PNG "edit-booking")
-
-Cancel booking modal
-This serves as a defensive programming feature for the user asking if they really wish to cancel their booking.
-
-The title and message body are personalised and the buttons have the same hover effects in keeping with the rest of the site.
-
-![cancel-booking-modal](docs/readme/features/15-features-cancel-booking-modal.PNG "cancel-booking-modal")
-
-#### Help using our site
-
-![help-modal](docs/readme/features/20-features-help-modal.PNG "help-modal")
-
-Customised alerts
-The Django framework has been used to apply messages throughout the site to give the user useful feedback.
-To do this a `messages.html` template was included in the base.html,
-`Alerts` can be seen at the top of the page for:
+4. Event Reminders and Notifications: Implement reminders and notifications for users regarding upcoming events, ticket purchases, or event changes.
