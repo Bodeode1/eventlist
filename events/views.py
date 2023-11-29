@@ -186,7 +186,8 @@ def show_user_events(request):
         attendee_count=Count('attendee'))
 
     context = {
-        "events": events
+        "events": events,
+        'username': user.username,
     }
     return render(request, "events/event-list.html", context)
 
@@ -303,7 +304,8 @@ def edit_event(request, id):
         context = {
             "event": event,
             "start_date": start_date,
-            "end_date": end_date
+            "end_date": end_date,
+            'username': user.username,
         }
         return render(request, "events/edit-event.html", context)
 

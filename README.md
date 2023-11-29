@@ -181,6 +181,10 @@ The logout page redirects users back to the home page.
 ![landing](docs/readme/features/login-feature.png)
 
 View Event Button on Home Page
+Once users have added events, they can access the event list by clicking a button on the home page.
+![landing](docs/readme/features/viewevent-button.png)
+
+View Tab on 
 
 If user is logged in, an additional `Book Now` button becomes available.  This is a short cut to the *view booking* template.
 
