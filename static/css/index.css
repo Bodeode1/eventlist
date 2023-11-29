@@ -79,9 +79,6 @@ a {
     gap : 1rem
 } 
 
-.one-column {
-    grid-template-columns: 1fr;
-}
 
 
 img {
@@ -183,6 +180,10 @@ img {
 
 
 /* Styling Tables */
+.table-responsive {
+    width: 100%;
+    overflow-x: scroll;
+}
 caption {
     font-size: 1.5rem; 
     font-weight: 650;
@@ -194,6 +195,7 @@ table {
     overflow: scroll;
     font-size: .85rem;
     background: #fff;
+    overflow-x: auto;
 }
 table,th,td {
     border : 1px solid #fbfafa;
@@ -442,7 +444,6 @@ label:not(.class-name) {
 .form-sidebar {
     display: none;
 }
-
 .form-sidebar {
     background: #eee;
 }
@@ -485,6 +486,7 @@ label:not(.class-name) {
     background: #fff;
     padding  :1rem;
     text-align: center;
+    border : 1px solid #ccc
 }
 
 .dashboard-card h3 , .dashboard-card summary {
@@ -550,21 +552,53 @@ label:not(.class-name) {
     color : rgba(255, 255, 255, 0.877)
 }
 
-@media (min-width:300px){
+@media (max-width:475px){
     .d-hide-sm{
         display: none;
     } 
     .make-first {
         order : 2
     }
+    .grid-column {
+        grid-template-columns: 1fr;
+    }
+    
     .flex-100{
         flex-basis: 0 0 100%;
         width:100%;
         max-width: 100%;
     }
+    .app-name {
+        text-decoration: underline;
+        margin-bottom: 1.5rem;
+    }
+    
 }
 
-@media(min-width : 746px){ 
+@media (min-width:500px){
+    .d-hide-sm{
+        display: none;
+    } 
+    .make-first {
+        order : 2
+    }
+    .grid-column {
+        grid-template-columns: repeat(2 , 1fr);
+    }
+    
+    .flex-100{
+        flex-basis: 0 0 100%;
+        width:100%;
+        max-width: 100%;
+    }
+    .app-name {
+        text-decoration: underline;
+        margin-bottom: 1.5rem;
+    }
+    
+}
+
+@media(min-width : 1024px){ 
     .pad-space {
         padding-left : 15rem ; 
         padding-right  :15rem ; 
@@ -573,6 +607,9 @@ label:not(.class-name) {
         grid-template-columns: 2fr 1fr
     }
     .three-column {
+        grid-template-columns: repeat(3 , 1fr)
+    }
+    .grid-column {
         grid-template-columns: repeat(3 , 1fr)
     }
     .content {
@@ -584,7 +621,7 @@ label:not(.class-name) {
         width: 50%;
         max-width: 50%;
     }
-    .form-sidebar, .main {
+    .form-sidebar {
         position: relative;
         display: flex;
         width: 100%;
@@ -594,5 +631,7 @@ label:not(.class-name) {
         justify-content: center;
         height: 100vh;
         min-height: 100vh;
+        background-image: url("../images/discover-image.jpg");
+        background-size: cover;
     }
 }
