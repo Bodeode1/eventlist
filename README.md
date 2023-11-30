@@ -273,16 +273,35 @@ Manual Testing.
 - linter checks on HTML, CSS, JavaScript and Python code
 
 Home Page
+
 A manual test was conducted on the home page. Upon clicking the home page link, it loaded the page successfully.
 
 ![landing](docs/readme/testing/homepage.test.png)
 
 View Tab on Event List Home Page
+
 When clicking the 'View' button on the home page, it effectively enables users to access the list of created events.
 
 ![landing](docs/readme/testing/evenlist-view-test.png)
 
 Edit Event Page
+
 A manual test was performed on the Edit Page. When clicking the edit button, it successfully loads the edit form.
 
 ![landing](docs/readme/testing/editevent.png)
+
+Add Event Page
+
+The Add Event page effectively displays the event creation form. Upon creating events, it accurately confirms the successful creation of events.
+
+![landing](docs/readme/testing/add-eventsuccess.png)
+
+LightHouse Test
+
+The Lighthouse tests show the following results
+
+![landing](docs/readme/testing/lighthouse-addevent-form.png)
+
+![landing](docs/readme/testing/lighthouse-event-listing.png)
+
+![landing](docs/readme/testing/lighthouse-login.png)
