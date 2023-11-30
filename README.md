@@ -7,11 +7,13 @@
     1. [User Stories](#User-Stories)
     2. [Design Thinking](#Design-Thinking)
     3. [Scope Plane](#Scope-Plane)
-3. [Features](#Features)
+3. [Database Design](#database-design)
+4. [Logic Flow Chart](#logic-flow-chart)
+5. [Features](#Features)
     1. [Design Features](#Design-Features)
     2. [Existing Features](#Existing-Features)
     3. [Future Adaptations](#Future-Adaptations)
-4. [Issues and Bugs](#Issues-and-Bugs)
+6. [Issues and Bugs](#Issues-and-Bugs)
 5. [Technologies Used](#Technologies-Used)
     1. [Main Languages Used](#Main-Languages-Used)
     2. [Frameworks, Libraries & Programs Used](#Frameworks,-Libraries-&-Programs-Used)
@@ -96,7 +98,7 @@ All of the fonts were sourced from [Google Fonts](https://fonts.google.com).
 Database schema was designed using [dbdesigner](https://erd.dbdesigner.net/).   
 ![Event Lits ERD](docs/readme/agile/erd-mapping.png)  
 
-## Logic Glow Chart
+## Logic Flow Chart
 Below is a comprehensive visual representation of the logic flow within this project. This flowchart outlines the sequential steps, that define the functionality and processes implemented in the system. It serves as a helpful guide to understand the underlying logic and workflow of the project.
 
 ![Event Lits ERD](docs/readme/media/logic-map.png)  
@@ -145,23 +147,19 @@ Wireframes were made to showcase the appearance of the site pages while keeping 
 <details>
 <summary>Balsamiq Wireframes</summary>
     
-![Site Wireframes](docs/readme/wireframes/00-index-page.png)
+![Site Wireframes](docs/readme/wireframes/wireframe-homepage-ipad.png)
 
-![Site Wireframes](docs/readme/wireframes/01-our-services.png)
+![Site Wireframes](docs/readme/wireframes/wireframe-homepage-iphone.png)
 
-![Site Wireframes](docs/readme/wireframes/02-join-us.png)
+![Site Wireframes](docs/readme/wireframes/wireframe-login-ipad.png)
 
-![Site Wireframes](docs/readme/wireframes/03-my-account.png)
+![Site Wireframes](docs/readme/wireframes/wireframe-login-iphone.png)
 
-![Site Wireframes](docs/readme/wireframes/04-book-now.png)
+![Site Wireframes](docs/readme/wireframes/wireframe-signup-ipad.png)
 
-![Site Wireframes](docs/readme/wireframes/05-my-appointments.png)
-
-![Site Wireframes](docs/readme/wireframes/06-daily-calender.png)
+![Site Wireframes](docs/readme/wireframes/wireframe-signup-iphone.png)
 
 </details>   
-
-[Back to top](#Mutts-Cuts)
 
 ## Features
 
@@ -196,7 +194,6 @@ The logout page redirects users back to the home page.
 View Event Button on Home Page
 
 Once users have added events, they can access the event list by clicking a button on the home page.
-
 ![landing](docs/readme/features/viewevent-button.png)
 
 View Tab on Event List Table
@@ -296,12 +293,66 @@ The Add Event page effectively displays the event creation form. Upon creating e
 
 ![landing](docs/readme/testing/add-eventsuccess.png)
 
-LightHouse Test
+LightHouse Tests
 
-The Lighthouse tests show the following results
+The Lighthouse tests show the following results:
 
 ![landing](docs/readme/testing/lighthouse-addevent-form.png)
 
 ![landing](docs/readme/testing/lighthouse-event-listing.png)
 
 ![landing](docs/readme/testing/lighthouse-login.png)
+
+Resonsive Tests
+
+The responsive tests show the the following results:
+
+![landing](docs/readme/testing/responsive-testing-325.png)
+
+![landing](docs/readme/testing/responsive-testing-375.png)
+
+![landing](docs/readme/testing/responsive-testing-475.png)
+
+![landing](docs/readme/testing/responsive-testing-768.png)
+
+### Deployment
+
+The site was deployed early closely following Code Institute guides.
+
+1. Login to Heroku and enter your details.
+command: Heroku login -i
+2. Get your app name from Heroku.
+command: Heroku apps
+3. Set the Heroku remote. (Replace <app_name> with your actual app name)
+command: Heroku git:remote -a <app_name>
+4. Add, commit and push to GitHub
+command: git add . && git commit -m "Deploy to Heroku via CLI"
+5. Push to both github and Heroku
+command: git push origin main
+command: git push heroku main
+
+MFA/2FA enabled?
+1. Click on Account Settings (under the avatar menu)
+2. Scroll down to the API Key section and click Reveal. Copy the key.
+3. Enter the command: heroku_config , and enter your api key you copied when prompted
+4. Complete the steps above, if you see an input box at the top middle of the editor...
+ a. enter your Heroku username
+ b. enter the api key you just copied
+
+## Credits
+
+### Content
+
+- Signup and Login page image from [Freepik](https://www.freepik.com/search?format=search&query=event%20vector&type=vector)
+
+
+### People
+
+My thanks to:
+- YouTube tutorial *Complete Django Crud Operation* by CodeAffection [CodeAffection](https://www.youtube.com/watch?v=N6jzspc2kds&t=1222s)
+- [CodeInstitute](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FST101+2021_T1/courseware/dc049b343a9b474f8d75822c5fda1582/a706dbb65b2d467a84e1bf67266851b1/) for the walkthrough project.
+
+## Acknowledgements
+
+- I would like to thank my wife and kids for their morale support and encouragement which has turned out to be priceless.
+
