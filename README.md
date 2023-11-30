@@ -14,14 +14,12 @@
     2. [Existing Features](#Existing-Features)
     3. [Future Adaptations](#Future-Adaptations)
 6. [Issues and Bugs](#Issues-and-Bugs)
-5. [Technologies Used](#Technologies-Used)
+7. [Technologies Used](#Technologies-Used)
     1. [Main Languages Used](#Main-Languages-Used)
     2. [Frameworks, Libraries & Programs Used](#Frameworks,-Libraries-&-Programs-Used)
-6. [Testing](#Testing)
-    1. [Testing.md](TESTING.md)
-7. [Deployment](#Deployment)
-    1. [Deployment.md](DEPLOYMENT.md)
-8. [Credits](#Credits)
+8. [Testing](#Testing)
+9. [Deployment](#Deployment)
+10. [Credits](#Credits)
     1. [Content](#Content)
     2. [People](#People)
 9. [Acknowledgements](#Acknowledgements)
@@ -314,6 +312,25 @@ The responsive tests show the the following results:
 ![landing](docs/readme/testing/responsive-testing-475.png)
 
 ![landing](docs/readme/testing/responsive-testing-768.png)
+
+CSS Test
+
+![landing](docs/readme/testing/css-error.png)
+
+Html Test
+
+![landing](docs/readme/testing/html-dashboard-error.png)
+
+![landing](docs/readme/testing/html-home-page-error.png)
+
+![landing](docs/readme/testing/html-signup-error.png)
+
+![landing](docs/readme/testing/html-addevent-error.png)
+
+Javascript Test
+
+![landing](docs/readme/testing/js-error.png)
+
 
 ### Deployment
 
