@@ -96,6 +96,11 @@ All of the fonts were sourced from [Google Fonts](https://fonts.google.com).
 Database schema was designed using [dbdesigner](https://erd.dbdesigner.net/).   
 ![Event Lits ERD](docs/readme/agile/erd-mapping.png)  
 
+## Logic Glow Chart
+Below is a comprehensive visual representation of the logic flow within this project. This flowchart outlines the sequential steps, that define the functionality and processes implemented in the system. It serves as a helpful guide to understand the underlying logic and workflow of the project.
+
+![Event Lits ERD](docs/readme/media/logic-map.png)  
+
 ## Scope Plane
 
 * **Functional Requirements**   
@@ -166,25 +171,30 @@ Wireframes were made to showcase the appearance of the site pages while keeping 
 ### Existing Features
 
 Home Page
+
 The home page immediately inform the users of the purpose of the webite. 
 ![landing](docs/readme/features/homepage-feature.png)
 
 Navigation 
+
 The navigation bar included hypertext links to four pages: the home page (represented by the logo), the Add Event page, the login page, and the sign-up page."
 
 ![landing](docs/readme/features/navigation-bar.png)
 
 Add Event Page
+
 The "Add Event" page enables registered users to create an event for listing purposes.
 
 ![Event Listing](docs/readme/features/add-event-feature.png)
 
 The Logout Page
+
 The logout page redirects users back to the home page.
 
 ![landing](docs/readme/features/login-feature.png)
 
 View Event Button on Home Page
+
 Once users have added events, they can access the event list by clicking a button on the home page.
 
 ![landing](docs/readme/features/viewevent-button.png)
@@ -195,6 +205,7 @@ The 'View' tab within the Event List table enables users to access comprehensive
 ![landing](docs/readme/features/viewevent-fullpage.png)
 
 Edit Event Page
+
 The 'Edit Event' button on the event editing page enables users to modify and save changes made to the listed event
 
 ![landing](docs/readme/features/edit-yourevent-feature.png)
@@ -215,50 +226,63 @@ The developer ran into several issues during the development of the website, wit
 
 Bug 1
 
-Testing Issue Checking static folder is working on deployed site #28
+Host Error Page
 
-this is in Sprint 2 of my projects. Any images stored in static/img/ folder should display when deployed. Remember to delete the DISABLE_COLLECTSTATIC config var in Heroku Settings by clicking on the X.
-When I deleted this config var and tried to redeploy, the build log stated python manage.py collectstatic --noinput.
-This prompted a different approach to handling static files by installing the dotenv python package. From there I updated the requirements.txt file and settings.py and env.py files in the project before pushing them to GitHub again.
-https://github.com/Becky139/mutts-cuts/issues/28
+When the server was launched, the website failed to load due to a disallowed host error.
+I resolved this issue by adding a different host header to the Allowed Hosts section within settings.py.
+
+![landing](docs/readme/media/html-home-page-error.png)
 
 Bug 2
 
-Carousel images change dimensions when transitioning #52
+When I oppened the website for the first time, the static files : css and javascript was not applied.
+The error displayed is shown beloe. However, I managed to resolve it by removing the 'Disable_Collectstatic=1' on Heroku.
 
-Found in Sprint 4. Carousel image resizes when transitioning despite being of similar/size dimension to other images.
-It produces an unwanted jumping effect.
-Resolved by setting height of parent element (class="carousel-inner height-640px") to match height of carousel items.
-https://github.com/Becky139/mutts-cuts/issues/52
+![landing](docs/readme/media/Static-Errors2.png)
 
-Bug 3
+## Technologies Used
 
-Write view logic in booking view to prevent created and updated bookings from clashing an existing booking #56
+### Main Languages Used
+- [HTML5](https://en.wikipedia.org/wiki/HTML5 "Link to HTML Wiki")
+- [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets "Link to CSS Wiki")
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language) "Link to Python Wiki")
 
-This can be found in Sprint 8. The answer to this conundrum lay within Django documentation.
-Querysets. It's abstracted so there is no need to open the database connection, perform actions, or close the connection.
-Applied logic within the bookings/views.py function.
-Essentially, if a record exists for a specific date AND specific time, the program can branch to tell the user their attempt to create or edit an appointment to the same time cannot be done. The business can only perform one appointment at a time as there is 1 member of staff.
-(https://github.com/Becky139/mutts-cuts/issues/56)
+### Frameworks, Libraries & Programs Used
 
-Bug 4
+- [Balsamiq](https://balsamiq.com/) for wireframing
+- [GitHub](https://github.com/) for repo storage and Agile project management using Kanban boards/issue tracking.
+- [Heroku](https://id.heroku.com/) for project deployment to the world wide web.
+- [Python3 ](https://docs.python.org/3/) with the following modules
+    - asgiref==3.5.0
+    - dj-database-url==0.5.0
+    - Django==3.2
+    - django-summernote==0.8.20.0
+    - gunicorn==20.1.0
+    - psycopg2==2.9.3
+    - pytz==2022.1
+    - sqlparse==0.4.2
+- [Bootstrap](https://getbootstrap.com/)
+- [Django](https://www.djangoproject.com/)
+- [PostgreSQL](https://www.postgresql.org/)
 
-Content cut off when viewing on a small mobile device #58
+## Testing
 
-This can be found in Sprint 8 Issues found on two pages Services and View Bookings This can be found in Sprint 8.
-In MDN docs I found the following to test
-1. Remove the following properties from the viewport in the head.html file
-2. user-scalable=no, maximum-scale=1.0, minimum-scale=1.0
-But then found the solution below to fix the issue
-Services page x-overflow solved. Container fluid was applied to multiple sections and a number of stray divs. Resolved.
-Table in view bookings cannot be viewed properly below 768px. Research suggests if was a poor choice to use table elements with so many fields when responsive design was a feature. This can be resolved by using a combination of display: block and flexbox to stack td elements. This could compact information to less than 500px and still be effective.
-https://github.com/Becky139/mutts-cuts/issues/58
+Manual Testing.
+- manual testing
+- Lighthouse site performance checks
+- linter checks on HTML, CSS, JavaScript and Python code
 
-Bug 5
+Home Page
+A manual test was conducted on the home page. Upon clicking the home page link, it loaded the page successfully.
 
-Appointment now available message when editing an appointment and not changing any details #57
+![landing](docs/readme/testing/homepage.test.png)
 
-This can be found in Sprint 8. In this scenario, if no details at changed, a separate 'info' message should be displayed stating no details were changed. Additional code will need to be added to the edit booking function in bookings/views.py.
-Changed message and status from error to warning in bookings/views.py.
-Now displaying a yellow bootstrap message stating No appointment available or this is your booking.
-https://github.com/Becky139/mutts-cuts/issues/57
+View Tab on Event List Home Page
+When clicking the 'View' button on the home page, it effectively enables users to access the list of created events.
+
+![landing](docs/readme/testing/evenlist-view-test.png)
+
+Edit Event Page
+A manual test was performed on the Edit Page. When clicking the edit button, it successfully loads the edit form.
+
+![landing](docs/readme/testing/editevent.png)
