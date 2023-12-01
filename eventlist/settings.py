@@ -24,10 +24,10 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
-CLOUDINARY_CLOUD_NAME = os.environ.get('CLOUD_NAME')
-CLOUDINARY_API_KEY = os.environ.get('API_KEY')
-CLOUDINARY_API_SECREET = os.environ.get('API_SECRET')
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+# CLOUDINARY_CLOUD_NAME = os.environ.get('CLOUD_NAME')
+# CLOUDINARY_API_KEY = os.environ.get('API_KEY')
+# CLOUDINARY_API_SECREET = os.environ.get('API_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -60,11 +60,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CLOUDINARY_STORAGE = {
-    "CLOUD_NAME" : CLOUDINARY_CLOUD_NAME,
-    "API_KEY" : CLOUDINARY_API_KEY,
-    "API_SECRET" : CLOUDINARY_API_SECREET
-}
+# CLOUDINARY_STORAGE = {
+#    "CLOUD_NAME" : CLOUDINARY_CLOUD_NAME,
+#    "API_KEY" : CLOUDINARY_API_KEY,
+#    "API_SECRET" : CLOUDINARY_API_SECREET
+#}
 ROOT_URLCONF = 'eventlist.urls'
 
 TEMPLATES = [
