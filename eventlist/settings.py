@@ -30,7 +30,7 @@ CLOUDINARY_API_KEY = os.environ.get('API_KEY')
 CLOUDINARY_API_SECREET = os.environ.get('API_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
