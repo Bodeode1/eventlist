@@ -91,6 +91,16 @@ All of the fonts were sourced from [Google Fonts](https://fonts.google.com).
 * Main fonts: Verdana sans-serif   
   A sans-serif type of font was chosen to give a simple, clean, and modern look to the site. 
 
+## User Stories
+![User Story](docs/readme/agile/user-story-progress.png)  
+
+![User Story](docs/readme/agile/user-story-progress.png)  
+
+![User Story](docs/readme/agile/user-story-view.png) 
+
+![User Story](docs/readme/agile/user-story2.png)  
+
+
 ## Database Design
 
 Database schema was designed using [dbdesigner](https://erd.dbdesigner.net/).   
