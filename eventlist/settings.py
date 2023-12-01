@@ -25,7 +25,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
-CLOUDINARY_CLOUD_NAME = os.environ.get('CLOUD_NAME')
+# CLOUDINARY_CLOUD_NAME = os.environ.get('CLOUD_NAME')
 # CLOUDINARY_API_KEY = os.environ.get('API_KEY')
 # CLOUDINARY_API_SECREET = os.environ.get('API_SECRET')
 
